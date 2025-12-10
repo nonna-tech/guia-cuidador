@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "titulo": "Contrato escrito entre cuidador e família",
+        "descricao": "É muito importante que o cuidador de idosos tenha um contrato escrito com a família ou empregador. Esse contrato deve indicar a jornada de trabalho, forma de pagamento, descanso semanal, responsabilidades do cuidador e se o vínculo é empregado doméstico (CLT) ou prestador de serviços. O contrato ajuda a evitar conflitos e facilita a prova em caso de ação trabalhista.",
+        "data": "2025-12-01 10:00:00"
+    },
+    {
+        "id": 2,
+        "titulo": "Jornada, horas extras e direito ao descanso",
+        "descricao": "Cuidadores que trabalham como empregados têm direito a limite de jornada, intervalo para descanso e, quando excedem a carga horária combinada, podem ter direito a horas extras. Mesmo em regime de plantão, é importante registrar os horários efetivamente trabalhados, anotar em agenda ou aplicativo e guardar mensagens que comprovem convocações em horários fora da rotina.",
+        "data": "2025-12-01 10:10:00"
+    },
+    {
+        "id": 3,
+        "titulo": "Registro de mensagens e provas digitais",
+        "descricao": "Orientação prática: o cuidador deve guardar conversas de WhatsApp, mensagens de áudio e prints que mostrem mudanças de escala, aumento de tarefas, acúmulo de função ou falta de pagamento. Essas provas digitais podem ser decisivas para demonstrar a realidade do trabalho em eventual processo, especialmente quando não há registro formal de ponto.",
+        "data": "2025-12-01 10:20:00"
+    },
+    {
+        "id": 4,
+        "titulo": "Cuidador Domiciliar vs. Cuidador Institucional: Principais Diferenças",
+        "descricao": "O cuidador domiciliar atua dentro da casa do idoso, oferecendo apoio personalizado e adaptado à rotina familiar. Seu foco está no cuidado individualizado, na criação de vínculo próximo e na execução de tarefas que variam conforme cada residência — como auxílio em atividades diárias, acompanhamento em consultas, preparo de refeições e monitoramento básico da saúde. Já o cuidador institucional trabalha em ambientes estruturados, como clínicas, casas de repouso, ILPIs ou hospitais. Nesses espaços, segue protocolos rígidos, atende vários idosos ao mesmo tempo e integra uma equipe multidisciplinar. As funções são mais padronizadas, com rotinas definidas por normas técnicas, prontuários, horários fixos e supervisão constante. Em resumo: no domicílio, o cuidado é individual, flexível e centrado na família; nas instituições, é coletivo, padronizado e guiado por protocolos.",
+        "data": "2025-12-02 00:37:33"
+    }
+]
