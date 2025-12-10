@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONEXÃO CUIDAR - Passo Fundo/RS</title>
+    <!-- Carregamento do Tailwind CSS para utilitários de estilo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuração do Tailwind para usar uma fonte limpa (Inter) e paleta de cores gov.br-like -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'gov-primary': '#053259', // Azul escuro, similar ao padrão gov.br
+                        'gov-secondary': '#007bff', // Azul de destaque
+                        'gov-light': '#f4f4f4', // Cinza claro para fundo
+                        'gov-accent': '#e6e6e6', // Cinza de acento
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos personalizados para replicar o layout de blocos do modelo anexo */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e9ecef; /* Fundo geral muito claro */
+        }
+        .header-bar {
+            background-color: #212529; /* Barra superior escura */
+            color: white;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        .main-container {
+            max-width: 1280px;
+            margin: auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar-right {
+            background-color: #f0f0f0; /* Fundo cinza claro para a barra lateral */
+        }
+        .block-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #053259;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 0.25rem;
+        }
+        .quote-box {
+            /* Cor de destaque azul suave para manter o padrão gov.br */
+            background-color: #007bff1a; 
+            border-left: 5px solid #007bff;
+            color: #053259;
+        }
+        /* Estilos para o Carrossel (Carousel) */
+        .carousel-item {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        .carousel-item.active {
+            opacity: 1;
+            position: relative;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- 1. BARRA SUPERIOR E NAVEGAÇÃO PRINCIPAL -->
+    <header>
+        <div class="header-bar">
+            <div class="main-container flex justify-between items-center px-4 md:px-6">
+                <!-- Título Principal -->
+                <h1 class="text-xl md:text-2xl font-bold tracking-wider text-white">CONEXÃO CUIDAR</h1>
+                
+                <!-- Menu Principal (Desktop) -->
+                <nav class="hidden md:flex space-x-4 text-sm font-medium">
+                    <a href="#home" class="hover:text-gov-secondary transition duration-150">HOME</a>
+                    <a href="#publicacoes" class="hover:text-gov-secondary transition duration-150">PUBLICAÇÕES</a>
+                    <a href="#reflexoes" class="hover:text-gov-secondary transition duration-150">REFLEXÕES</a>
+                    <a href="#casosaudios" class="hover:text-gov-secondary transition duration-150">CASOS & ÁUDIOS</a>
+                    <a href="#ebooks" class="hover:text-gov-secondary transition duration-150">VENDA DE E-BOOKS</a>
+                    <a href="#suporte" class="hover:text-gov-secondary transition duration-150">SUPORTE</a>
+                    <a href="#contato" class="hover:text-gov-secondary transition duration-150">CONTATO</a>
+                </nav>
+                
+                <!-- Botão de Menu (Mobile) - Funcionalidade simplificada para este exemplo -->
+                <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Subtítulo / Faixa de Apoio -->
+        <div class="bg-gov-primary py-3">
+            <div class="main-container px-4 md:px-6">
+                <p class="text-base md:text-lg text-white font-light">O seu portal de apoio sobre a Política Nacional de Cuidados em Passo Fundo/RS.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Mobile (oculto por padrão) -->
+    <div id="mobile-menu" class="header-bar md:hidden hidden border-t border-gray-700">
+        <nav class="flex flex-col text-sm font-medium p-4 space-y-2">
+            <a href="#home" class="block hover:text-gov-secondary transition duration-150">HOME</a>
+            <a href="#publicacoes" class="block hover:text-gov-secondary transition duration-150">PUBLICAÇÕES</a>
+            <a href="#reflexoes" class="block hover:text-gov-secondary transition duration-150">REFLEXÕES</a>
+            <a href="#casosaudios" class="block hover:text-gov-secondary transition duration-150">CASOS & ÁUDIOS</a>
+            <a href="#ebooks" class="block hover:text-gov-secondary transition duration-150">VENDA DE E-BOOKS</a>
+            <a href="#suporte" class="block hover:text-gov-secondary transition duration-150">SUPORTE</a>
+            <a href="#contato" class="block hover:text-gov-secondary transition duration-150">CONTATO</a>
+        </nav>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL (Home Page) -->
+    <main class="main-container min-h-screen pt-4 pb-10">
+        <div class="flex flex-col lg:flex-row px-4 md:px-6 gap-6">
+
+            <!-- COLUNA PRINCIPAL (2/3 da Largura no Desktop) -->
+            <div class="w-full lg:w-8/12 space-y-6">
+
+                <!-- Bloco Principal: Carrossel de Imagens de Destaque e Overlay (IMAGEM ROTATIVA) -->
+                <!-- IMPORTANTE: O código busca as imagens em ./assets/imagem[1-4].jpg. Crie a pasta e suba as imagens. -->
+                <div id="main-carousel" class="relative rounded-lg overflow-hidden shadow-lg h-64 md:h-96">
+                    
+                    <!-- Item 1 (Visível por padrão) -->
+                    <div class="carousel-item active">
+                        <img src="./assets/imagem1.jpg" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/1000x500/053259/ffffff?text=CONEXÃO+CUIDAR%0AImagem+1+Ausente';" 
+                             alt="Imagem conceitual de cuidado 1" 
+                             class="w-full h-full object-cover opacity-90">
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="carousel-item">
+                        <img src="./assets/imagem2.jpg" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/1000x500/007bff/ffffff?text=CONEXÃO+CUIDAR%0AImagem+2+Ausente';" 
+                             alt="Imagem conceitual de cuidado 2" 
+                             class="w-full h-full object-cover opacity-90">
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="carousel-item">
+                        <img src="./assets/imagem3.jpg" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/1000x500/053259/ffffff?text=CONEXÃO+CUIDAR%0AImagem+3+Ausente';" 
+                             alt="Imagem conceitual de cuidado 3" 
+                             class="w-full h-full object-cover opacity-90">
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="carousel-item">
+                        <img src="./assets/imagem4.jpg" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/1000x500/007bff/ffffff?text=CONEXÃO+CUIDAR%0AImagem+4+Ausente';" 
+                             alt="Imagem conceitual de cuidado 4" 
+                             class="w-full h-full object-cover opacity-90">
+                    </div>
+                    
+                    <!-- Overlay de Texto Fixo -->
+                    <div class="absolute inset-0 bg-gov-primary bg-opacity-30 flex items-end">
+                        <div class="p-6 text-white w-full">
+                            <span class="text-xl md:text-3xl font-bold">Iniciativa Cidadã Passo Fundo</span>
+                            <p class="text-sm mt-1">Trabalhando pela regulamentação e informação da Política Nacional de Cuidados.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEÇÃO 1: VÍDEOS E REFERÊNCIAS (Adaptação horizontal) -->
+                <div class="flex flex-col md:flex-row gap-6">
+                    
+                    <!-- VÍDEOS: CANAL CONEXÃO CUIDAR (COM EMBED DO YOUTUBE) -->
+                    <div class="w-full md:w-1/2 p-4 border rounded-lg bg-white shadow-sm">
+                        <h2 class="block-title">VÍDEOS: CANAL CONEXÃO CUIDAR</h2>
+                        
+                        <!-- Embed do vídeo do YouTube (PDdSx8w8AYo) -->
+                        <div class="aspect-w-16 aspect-h-9 bg-gray-200 flex items-center justify-center rounded overflow-hidden">
+                            <iframe 
+                                width="100%" 
+                                height="100%" 
+                                src="https://www.youtube.com/embed/PDdSx8w8AYo" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                class="w-full h-full">
+                            </iframe>
+                        </div>
+                        <a href="https://www.youtube.com/channel/seu-canal-aqui" target="_blank" class="mt-2 block text-gov-secondary hover:underline text-sm">Acesse nosso canal completo no YouTube</a>
+                    </div>
+                    
+                    <!-- REFERÊNCIAS: PONTOS DE APOIO EM PASSO FUNDO -->
+                    <div class="w-full md:w-1/2 p-4 border rounded-lg bg-white shadow-sm">
+                        <h2 class="block-title">REFERÊNCIAS: PONTOS DE APOIO EM PASSO FUNDO</h2>
+                        <ul class="list-disc list-inside space-y-1 text-sm">
+                            <li>Balcão do Idoso/UPF: <a href="#" class="text-gov-secondary hover:underline">Link Útil</a></li>
+                            <li>Ministério Público/Promotoria do Idoso: <a href="#" class="text-gov-secondary hover:underline">Endereço & Contato</a></li>
+                            <li>Defensoria Pública Estadual: <a href="#" class="text-gov-secondary hover:underline">Acessar Serviços</a></li>
+                            <li>INSS - Passo Fundo: <a href="#" class="text-gov-secondary hover:underline">Agendamento</a></li>
+                            <li class="mt-2 text-xs text-gray-500">Links de referência para serviços essenciais.</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- SEÇÃO 2: PUBLICAÇÕES e QUEM CUIDA DE VOCÊ? (Adaptação horizontal) -->
+                <div class="flex flex-col md:flex-row gap-6">
+                    
+                    <!-- DESTAQUES: PUBLICAÇÕES E ARTIGOS (EXPOSIÇÕES) -->
+                    <div class="w-full md:w-1/2 p-4 border rounded-lg bg-white shadow-sm">
+                        <h2 class="block-title">DESTAQUES: PUBLICAÇÕES E ARTIGOS</h2>
+                        <ul class="list-disc list-inside space-y-2 text-sm">
+                            <li><a href="#artigo5" class="text-gov-primary hover:text-gov-secondary font-medium">Artigo 5: Os Desafios Éticos do Cuidado Domiciliar</a></li>
+                            <li><a href="#artigo4" class="text-gov-primary hover:text-gov-secondary font-medium">Publicação 4: Panorama da PNC em 2024</a></li>
+                            <li><a href="#artigo3" class="text-gov-primary hover:text-gov-secondary font-medium">Artigo 3: Direitos e Deveres do Cuidador Informal</a></li>
+                            <li><a href="#artigo2" class="text-gov-primary hover:text-gov-secondary font-medium">Publicação 2: Impacto da Solidão na Terceira Idade</a></li>
+                            <li><a href="#artigo1" class="text-gov-primary hover:text-gov-secondary font-medium">Artigo 1: Análise da Lei 13.560/2017</a></li>
+                            <li><a href="#ver-todos" class="text-gov-secondary font-bold mt-2 inline-block hover:underline">Ver todos (65)</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- QUEM CUIDA DE VOCÊ? (200 ANOS DE HISTÓRIA) -->
+                    <div class="w-full md:w-1/2 p-4 border rounded-lg bg-white shadow-sm">
+                        <h2 class="block-title">QUEM CUIDA DE VOCÊ?</h2>
+                        <p class="text-sm leading-relaxed text-justify">A "Conexão Cuidar" é uma iniciativa cidadã nascida em Passo Fundo/RS, dedicada a fornecer informações transparentes e apoio prático sobre a implementação e o impacto da Política Nacional de Cuidados (PNC). Nosso objetivo é ser um ponto de referência para idosos, cuidadores familiares e profissionais, promovendo a dignidade e o bem-estar da comunidade. Atuamos como um canal de resposta e mobilização frente à necessidade de regulamentação local da PNC.</p>
+                        <a href="#sobre" class="mt-2 block text-gov-secondary hover:underline text-sm font-medium">Saiba mais sobre a nossa missão</a>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- COLUNA LATERAL (1/3 da Largura no Desktop) -->
+            <div class="w-full lg:w-4/12 sidebar-right p-6 rounded-lg shadow-md space-y-6">
+                
+                <!-- Bloco: Espaço para Citação Dinâmica (CITAÇÃO) -->
+                <div class="quote-box p-4 rounded-md">
+                    <p id="dynamic-quote" class="text-lg italic font-serif leading-relaxed">"O cuidado é uma teia social que nos conecta, mas a política precisa dar o nó final."</p>
+                    <cite id="quote-source" class="block mt-2 text-right text-sm font-medium not-italic">- Especialista Anônimo</cite>
+                </div>
+
+                <!-- Bloco: CÁLCULO E SIMULAÇÃO DE CUSTOS DE CUIDADO (FAÇA UMA VISITA) -->
+                <div class="bg-white p-4 rounded-lg shadow-sm border">
+                    <h2 class="block-title">CÁLCULO E SIMULAÇÃO DE CUSTOS DE CUIDADO</h2>
+                    <div class="space-y-3 text-sm">
+                        <div>
+                            <label for="daily-hours" class="block font-medium mb-1">Horas Diárias:</label>
+                            <input type="number" id="daily-hours" min="1" max="24" value="8" class="w-full p-2 border border-gray-300 rounded focus:border-gov-secondary focus:ring focus:ring-gov-secondary focus:ring-opacity-50">
+                        </div>
+                        <div>
+                            <label for="weekly-days" class="block font-medium mb-1">Dias na Semana:</label>
+                            <input type="number" id="weekly-days" min="1" max="7" value="5" class="w-full p-2 border border-gray-300 rounded focus:border-gov-secondary focus:ring focus:ring-gov-secondary focus:ring-opacity-50">
+                        </div>
+                        <button id="simulate-button" class="w-full bg-gov-secondary text-white font-bold py-2 rounded-md hover:bg-gov-primary transition duration-200">
+                            SIMULAR VALOR BASE
+                        </button>
+                        
+                        <div id="simulation-result" class="mt-4 text-center p-3 rounded-md border border-gov-accent bg-gray-50 hidden">
+                            <!-- Resultados serão inseridos aqui -->
+                        </div>
+
+                        <p class="text-xs text-red-600 mt-3 text-justify">
+                            **DISCLAIMER:** Este valor é uma SIMULAÇÃO BASEADA em uma tabela de referência e **não** constitui um preço de mercado ou obrigação legal. Consulte profissionais e a legislação local para custos reais.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- NOVO BLOCO: APROFUNDE O CONHECIMENTO (Substitui a Galeria) -->
+                <div class="bg-white p-4 rounded-lg shadow-sm border">
+                    <h2 class="block-title">APROFUNDE O CONHECIMENTO</h2>
+                    <p class="text-sm mb-3">Acesse materiais exclusivos, e-books e análises jurídicas detalhadas para se aprofundar na Política Nacional de Cuidados e seus impactos.</p>
+                    <a href="#ebooks" class="block text-center bg-gov-primary text-white font-bold py-3 rounded-md hover:bg-gov-secondary transition duration-200 shadow-lg">
+                        <svg class="w-5 h-5 inline-block mr-2 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.202 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.8 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.8 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.2 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
+                        VISITAR PÁGINA DE E-BOOKS
+                    </a>
+                    <a href="#suporte" class="mt-2 block text-center text-gov-primary hover:underline text-xs font-medium">Ver opções de Suporte e Voluntariado</a>
+                </div>
+
+            </div>
+        </div>
+        
+        <!-- Placeholder para as páginas de conteúdo (visibilidade controlada por JS em um app real) -->
+        <section id="publicacoes" class="p-6 hidden"><h2>PÁGINA: PUBLICAÇÕES</h2><p>Artigos formais, notícias e reportagens externas sobre a Política Nacional de Cuidados.</p></section>
+        <section id="reflexoes" class="p-6 hidden"><h2>PÁGINA: REFLEXÕES</h2><p>Meus artigos de opinião, análises e reflexões pessoais sobre a vivência do cuidado e temas éticos.</p></section>
+        <section id="casosaudios" class="p-6 hidden"><h2>PÁGINA: CASOS & ÁUDIOS</h2><p>Fichas de Casos Jurídicos (anonimizados) com player de áudio para análise.</p></section>
+        <section id="ebooks" class="p-6 hidden"><h2>PÁGINA: VENDA DE E-BOOKS</h2><p>Lista de E-books e materiais de estudo para venda, com links diretos.</p></section>
+        <section id="suporte" class="p-6 hidden"><h2>PÁGINA: SUPORTE</h2><p>CONECTA VOLUNTÁRIO (Cadastro de instituições) e DOAÇÃO CUIDADO (Conexão de doadores e necessitados).</p></section>
+        <section id="contato" class="p-6 hidden"><h2>PÁGINA: CONTATO</h2><p>Informações de contato do portal e da advogada criadora: [Nome, OAB, Telefone, E-mail].</p></section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="bg-gov-primary text-white py-6 mt-10">
+        <div class="main-container px-4 md:px-6 flex flex-col md:flex-row justify-between items-center text-sm">
+            <p>&copy; <span id="current-year"></span> Conexão Cuidar - Iniciativa Cidadã Passo Fundo/RS. Todos os direitos reservados.</p>
+            <nav class="mt-4 md:mt-0 space-x-4">
+                <a href="#suporte" class="hover:text-gov-secondary">Suporte</a>
+                <a href="#contato" class="hover:text-gov-secondary">Contato</a>
+                <a href="#sobre" class="hover:text-gov-secondary">Sobre Nós</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT: Lógica da Calculadora, Citação Dinâmica e Carrossel -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentYear = new Date().getFullYear();
+            document.getElementById('current-year').textContent = currentYear;
+
+            // --- Lógica da Citação Dinâmica ---
+            const quotes = [
+                { text: "O cuidado é uma teia social que nos conecta, mas a política precisa dar o nó final.", source: "Especialista Anônimo" },
+                { text: "A dignidade da pessoa idosa é um princípio que deve nortear toda a Política de Cuidados.", source: "Lei nº 10.741/03 (Estatuto do Idoso)" },
+                { text: "Encontrei no portal as referências que precisava para o meu pai. Uma luz em Passo Fundo.", source: "Usuário(a) A." },
+                { text: "Cuidar de quem cuida também é um ato de responsabilidade social e política.", source: "Movimento PNC-RS" }
+            ];
+
+            const quoteEl = document.getElementById('dynamic-quote');
+            const sourceEl = document.getElementById('quote-source');
+
+            function updateQuote() {
+                const randomIndex = Math.floor(Math.random() * quotes.length);
+                const quote = quotes[randomIndex];
+                quoteEl.textContent = `"${quote.text}"`;
+                sourceEl.textContent = `- ${quote.source}`;
+            }
+
+            // Atualiza a citação a cada 10 segundos
+            updateQuote();
+            setInterval(updateQuote, 10000);
+
+
+            // --- Lógica da Calculadora de Custos de Cuidado ---
+            const simulateButton = document.getElementById('simulate-button');
+            const dailyHoursInput = document.getElementById('daily-hours');
+            const weeklyDaysInput = document.getElementById('weekly-days');
+            const resultDiv = document.getElementById('simulation-result');
+
+            // Tabela de Referência (Valor Base por Hora, R$ 15,00. Apenas para simulação)
+            const BASE_HOURLY_RATE = 15.00; 
+
+            simulateButton.addEventListener('click', () => {
+                const dailyHours = parseFloat(dailyHoursInput.value);
+                const weeklyDays = parseFloat(weeklyDaysInput.value);
+
+                if (isNaN(dailyHours) || isNaN(weeklyDays) || dailyHours <= 0 || weeklyDays <= 0 || dailyHours > 24 || weeklyDays > 7) {
+                    resultDiv.innerHTML = '<p class="text-red-700 font-bold">Por favor, insira valores válidos (Horas Diárias entre 1 e 24; Dias entre 1 e 7).</p>';
+                    resultDiv.classList.remove('hidden');
+                    return;
+                }
+
+                // Cálculo
+                const totalHoursPerWeek = dailyHours * weeklyDays;
+                const totalHoursPerMonth = totalHoursPerWeek * 4.33; // Média de semanas no mês
+                
+                const hourlyCost = BASE_HOURLY_RATE.toFixed(2).replace('.', ',');
+                const weeklyCost = (totalHoursPerWeek * BASE_HOURLY_RATE).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                const monthlyCost = (totalHoursPerMonth * BASE_HOURLY_RATE).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                
+                // Exibição dos resultados
+                resultDiv.innerHTML = `
+                    <p class="font-bold text-lg text-gov-primary">SIMULAÇÃO BASE DE CUSTO</p>
+                    <p class="mt-2 text-sm">Custo Base Sugerido por Hora: <span class="font-bold text-gov-secondary">R$ ${hourlyCost}</span></p>
+                    <p class="text-sm">Total de Horas/Mês (Aprox.): <span class="font-bold">${totalHoursPerMonth.toFixed(1)}h</span></p>
+                    <p class="text-xl font-extrabold text-green-700 mt-2">Valor Base Mensal: ${monthlyCost}</p>
+                    <p class="text-xs text-gray-500 mt-2">(Estimativa de ${weeklyCost}/semana)</p>
+                `;
+                resultDiv.classList.remove('hidden');
+            });
+
+            // --- Lógica do Carrossel de Imagens (Imagens Rotativas) ---
+            const carousel = document.getElementById('main-carousel');
+            const items = carousel.querySelectorAll('.carousel-item');
+            let currentIndex = 0;
+
+            function showNextItem() {
+                // Remove a classe 'active' do item atual
+                items[currentIndex].classList.remove('active');
+                
+                // Calcula o próximo índice
+                currentIndex = (currentIndex + 1) % items.length;
+                
+                // Adiciona a classe 'active' ao próximo item
+                items[currentIndex].classList.add('active');
+            }
+
+            // Inicia a rotação a cada 5 segundos (5000ms)
+            setInterval(showNextItem, 5000);
+
+            // --- Lógica do Menu Mobile (Toggle) ---
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>
