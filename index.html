@@ -14,8 +14,8 @@
                     colors: {
                         'gov-primary': '#053259', // Azul escuro, similar ao padrão gov.br
                         'gov-secondary': '#007bff', // Azul de destaque
-                        'gov-light': '#f4f4f4', // Cinza claro para fundo
-                        'gov-accent': '#e6e6e6', // Cinza de acento
+                        'gov-light': '#f4f4f4',     // Cinza claro para fundo
+                        'gov-accent': '#e6e6e6',    // Cinza de acento
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -60,8 +60,7 @@
             padding-bottom: 0.25rem;
         }
         .quote-box {
-            /* Cor de destaque azul suave para manter o padrão gov.br */
-            background-color: #007bff1a; 
+            background-color: #007bff1a;
             border-left: 5px solid #007bff;
             color: #053259;
         }
@@ -77,7 +76,6 @@
             opacity: 1;
             position: relative;
         }
-        /* Estilo para rodapé da citação (para evitar quebras de linha em números) */
         .citation-footer {
             display: block;
             margin-top: 1rem;
@@ -109,7 +107,7 @@
                     <a href="#contato" class="hover:text-gov-secondary transition duration-150" onclick="showContent('contato');">CONTATO</a>
                 </nav>
                 
-                <!-- Botão de Menu (Mobile) - Funcionalidade simplificada para este exemplo -->
+                <!-- Botão de Menu (Mobile) -->
                 <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
@@ -227,7 +225,7 @@
 
                     </div>
 
-                    <!-- SEÇÃO 2: PUBLICAÇÕES + (AGORA) CÁLCULO E SIMULAÇÃO -->
+                    <!-- SEÇÃO 2: PUBLICAÇÕES + GALERIA DE FOTOS -->
                     <div class="flex flex-col md:flex-row gap-6">
                         
                         <!-- DESTAQUES: PUBLICAÇÕES E ARTIGOS -->
@@ -243,30 +241,74 @@
                             </ul>
                         </div>
                         
-                        <!-- AGORA AQUI: CÁLCULO E SIMULAÇÃO DE CUSTOS DE CUIDADO -->
+                        <!-- NOVO BLOCO: GALERIA DE FOTOS -->
                         <div class="w-full md:w-1/2 p-4 border rounded-lg bg-white shadow-sm">
-                            <h2 class="block-title">CÁLCULO E SIMULAÇÃO DE CUSTOS DE CUIDADO</h2>
-                            <div class="space-y-3 text-sm">
-                                <div>
-                                    <label for="daily-hours" class="block font-medium mb-1">Horas Diárias:</label>
-                                    <input type="number" id="daily-hours" min="1" max="24" value="8" class="w-full p-2 border border-gray-300 rounded focus:border-gov-secondary focus:ring focus:ring-gov-secondary focus:ring-opacity-50">
-                                </div>
-                                <div>
-                                    <label for="weekly-days" class="block font-medium mb-1">Dias na Semana:</label>
-                                    <input type="number" id="weekly-days" min="1" max="7" value="5" class="w-full p-2 border border-gray-300 rounded focus:border-gov-secondary focus:ring focus:ring-gov-secondary focus:ring-opacity-50">
-                                </div>
-                                <button id="simulate-button" class="w-full bg-gov-secondary text-white font-bold py-2 rounded-md hover:bg-gov-primary transition duration-200">
-                                    SIMULAR VALOR BASE
-                                </button>
-                                
-                                <div id="simulation-result" class="mt-4 text-center p-3 rounded-md border border-gov-accent bg-gray-50 hidden">
-                                    <!-- Resultados serão inseridos aqui -->
-                                </div>
+                            <h2 class="block-title">GALERIA DE FOTOS</h2>
+                            <p class="text-xs text-gray-600 mb-3">
+                                Projeto Integrador 2025 – Turma Cuidador de Idosos (Senac Passo Fundo/RS)
+                            </p>
 
-                                <p class="text-xs text-red-600 mt-3 text-justify">
-                                    **DISCLAIMER:** Este valor é uma SIMULAÇÃO BASEADA em uma tabela de referência e **não** constitui um preço de mercado ou obrigação legal. Consulte profissionais e a legislação local para custos reais.
-                                </p>
+                            <div class="grid grid-cols-2 gap-3">
+                                <!-- Foto 1 -->
+                                <button type="button"
+                                    onclick="openGallery('./assets/imagem6.jpg', 'Atividade recreativa com garrafas coloridas – estimulação motora e cognitiva.');">
+                                    <img
+                                        src="./assets/imagem6.jpg"
+                                        onerror="this.onerror=null; this.src='https://picsum.photos/300/200?random=21';"
+                                        alt="Atividade recreativa com garrafas coloridas"
+                                        class="w-full h-28 object-cover rounded border border-gray-200"
+                                    >
+                                </button>
+
+                                <!-- Foto 2 -->
+                                <button type="button"
+                                    onclick="openGallery('./assets/imagem7.jpg', 'Oficina de cores e formas na mesa – interação entre cuidadoras e idosas.');">
+                                    <img
+                                        src="./assets/imagem7.jpg"
+                                        onerror="this.onerror=null; this.src='https://picsum.photos/300/200?random=22';"
+                                        alt="Oficina de cores e formas na mesa"
+                                        class="w-full h-28 object-cover rounded border border-gray-200"
+                                    >
+                                </button>
+
+                                <!-- Foto 3 -->
+                                <button type="button"
+                                    onclick="openGallery('./assets/imagem8.jpg', 'Dinâmica com círculos coloridos – treino de atenção e coordenação.');">
+                                    <img
+                                        src="./assets/imagem8.jpg"
+                                        onerror="this.onerror=null; this.src='https://picsum.photos/300/200?random=23';"
+                                        alt="Dinâmica com círculos coloridos"
+                                        class="w-full h-28 object-cover rounded border border-gray-200"
+                                    >
+                                </button>
+
+                                <!-- Foto 4 -->
+                                <button type="button"
+                                    onclick="openGallery('./assets/imagem9.jpg', 'Exercício de alcance com cores – participação ativa das idosas.');">
+                                    <img
+                                        src="./assets/imagem9.jpg"
+                                        onerror="this.onerror=null; this.src='https://picsum.photos/300/200?random=24';"
+                                        alt="Exercício de alcance com cores"
+                                        class="w-full h-28 object-cover rounded border border-gray-200"
+                                    >
+                                </button>
+
+                                <!-- Foto 5 -->
+                                <button type="button"
+                                    onclick="openGallery('./assets/imagem10.jpg', 'Jogo com mãos recortadas – coordenação motora e memória.');">
+                                    <img
+                                        src="./assets/imagem10.jpg"
+                                        onerror="this.onerror=null; this.src='https://picsum.photos/300/200?random=25';"
+                                        alt="Jogo com mãos recortadas"
+                                        class="w-full h-28 object-cover rounded border border-gray-200"
+                                    >
+                                </button>
                             </div>
+
+                            <p class="mt-3 text-xs text-gray-500">
+                                Para adicionar novas fotos, basta subir os arquivos na pasta <strong>assets</strong> e criar
+                                novos itens na galeria.
+                            </p>
                         </div>
 
                     </div>
@@ -278,15 +320,19 @@
                     
                     <!-- Bloco: Espaço para Citação Dinâmica (CITAÇÃO) -->
                     <div class="quote-box p-4 rounded-md">
-                        <p id="dynamic-quote" class="text-lg italic font-serif leading-relaxed">"O cuidado é uma teia social que nos conecta, mas a política precisa dar o nó final."</p>
-                        <cite id="quote-source" class="block mt-2 text-right text-sm font-medium not-italic">- Especialista Anônimo</cite>
+                        <p id="dynamic-quote" class="text-lg italic font-serif leading-relaxed">
+                            "O cuidado é uma teia social que nos conecta, mas a política precisa dar o nó final."
+                        </p>
+                        <cite id="quote-source" class="block mt-2 text-right text-sm font-medium not-italic">
+                            - Especialista Anônimo
+                        </cite>
                     </div>
 
-                    <!-- AGORA AQUI: QUEM CUIDA DE VOCÊ? (com imagem5) -->
+                    <!-- QUEM CUIDA DE VOCÊ? -->
                     <div class="bg-white p-4 rounded-lg shadow-sm border">
                         <h2 class="block-title">QUEM CUIDA DE VOCÊ?</h2>
 
-                        <!-- Imagem do projeto / avatar da iniciativa -->
+                        <!-- Imagem do projeto -->
                         <img 
                             src="./assets/imagem5.jpg"
                             onerror="this.onerror=null; this.src='https://picsum.photos/600/300?random=10';"
@@ -295,22 +341,31 @@
                         >
 
                         <p class="text-sm leading-relaxed text-justify">
-                            A "Conexão Cuidar" é uma iniciativa cidadã nascida em Passo Fundo/RS, dedicada a fornecer informações transparentes e apoio prático sobre a implementação e o impacto da Política Nacional de Cuidados (PNC).
-                            Nosso objetivo é ser um ponto de referência para idosos, cuidadores familiares e profissionais, promovendo a dignidade e o bem-estar da comunidade.
-                            Atuamos como um canal de resposta e mobilização frente à necessidade de regulamentação local da PNC.
+                            A "Conexão Cuidar" é uma iniciativa cidadã nascida em Passo Fundo/RS, dedicada a fornecer informações
+                            transparentes e apoio prático sobre a implementação e o impacto da Política Nacional de Cuidados (PNC).
+                            Nosso objetivo é ser um ponto de referência para idosos, cuidadores familiares e profissionais,
+                            promovendo a dignidade e o bem-estar da comunidade. Atuamos como um canal de resposta e mobilização
+                            frente à necessidade de regulamentação local da PNC.
                         </p>
-                        <a href="#sobre" class="mt-2 block text-gov-secondary hover:underline text-sm font-medium">Saiba mais sobre a nossa missão</a>
+                        <a href="#sobre" class="mt-2 block text-gov-secondary hover:underline text-sm font-medium">
+                            Saiba mais sobre a nossa missão
+                        </a>
                     </div>
 
                     <!-- Bloco: APROFUNDE O CONHECIMENTO -->
                     <div class="bg-white p-4 rounded-lg shadow-sm border">
                         <h2 class="block-title">APROFUNDE O CONHECIMENTO</h2>
-                        <p class="text-sm mb-3">Acesse materiais exclusivos, e-books e análises jurídicas detalhadas para se aprofundar na Política Nacional de Cuidados e seus impactos.</p>
+                        <p class="text-sm mb-3">
+                            Acesse materiais exclusivos, e-books e análises jurídicas detalhadas para se aprofundar na Política
+                            Nacional de Cuidados e seus impactos.
+                        </p>
                         <a href="#ebooks" class="block text-center bg-gov-primary text-white font-bold py-3 rounded-md hover:bg-gov-secondary transition duration-200 shadow-lg">
                             <svg class="w-5 h-5 inline-block mr-2 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.202 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.8 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.8 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.2 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
                             VISITAR PÁGINA DE E-BOOKS
                         </a>
-                        <a href="#suporte" class="mt-2 block text-center text-gov-primary hover:underline text-xs font-medium">Ver opções de Suporte e Voluntariado</a>
+                        <a href="#suporte" class="mt-2 block text-center text-gov-primary hover:underline text-xs font-medium">
+                            Ver opções de Suporte e Voluntariado
+                        </a>
                     </div>
 
                     <!-- Bloco: Ícones das Redes Sociais -->
@@ -463,6 +518,22 @@
 
     </main>
 
+    <!-- MODAL DA GALERIA -->
+    <div id="gallery-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg max-w-3xl w-11/12 p-4 relative">
+            <button type="button"
+                    class="absolute top-2 right-2 text-gray-600 hover:text-gray-900 text-xl font-bold"
+                    onclick="closeGallery()">
+                &times;
+            </button>
+            <img id="gallery-modal-image"
+                 src=""
+                 alt=""
+                 class="w-full h-auto max-h-[80vh] object-contain rounded mb-3">
+            <p id="gallery-modal-caption" class="text-sm text-gray-700"></p>
+        </div>
+    </div>
+
     <!-- RODAPÉ -->
     <footer class="bg-gov-primary text-white py-6 mt-10">
         <div class="main-container px-4 md:px-6 flex flex-col md:flex-row justify-between items-center text-sm">
@@ -475,7 +546,7 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT: Lógica da Calculadora, Citação Dinâmica, Carrossel e Navegação -->
+    <!-- JAVASCRIPT: Navegação, Citação Dinâmica, Carrossel, Menu Mobile e Galeria -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const currentYear = new Date().getFullYear();
@@ -512,41 +583,6 @@
             updateQuote();
             setInterval(updateQuote, 10000);
 
-            // --- Calculadora de Custos de Cuidado ---
-            const simulateButton = document.getElementById('simulate-button');
-            const dailyHoursInput = document.getElementById('daily-hours');
-            const weeklyDaysInput = document.getElementById('weekly-days');
-            const resultDiv = document.getElementById('simulation-result');
-
-            const BASE_HOURLY_RATE = 15.00; 
-
-            simulateButton.addEventListener('click', () => {
-                const dailyHours = parseFloat(dailyHoursInput.value);
-                const weeklyDays = parseFloat(weeklyDaysInput.value);
-
-                if (isNaN(dailyHours) || isNaN(weeklyDays) || dailyHours <= 0 || weeklyDays <= 0 || dailyHours > 24 || weeklyDays > 7) {
-                    resultDiv.innerHTML = '<p class="text-red-700 font-bold">Por favor, insira valores válidos (Horas Diárias entre 1 e 24; Dias entre 1 e 7).</p>';
-                    resultDiv.classList.remove('hidden');
-                    return;
-                }
-
-                const totalHoursPerWeek = dailyHours * weeklyDays;
-                const totalHoursPerMonth = totalHoursPerWeek * 4.33; 
-                
-                const hourlyCost = BASE_HOURLY_RATE.toFixed(2).replace('.', ',');
-                const weeklyCost = (totalHoursPerWeek * BASE_HOURLY_RATE).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-                const monthlyCost = (totalHoursPerMonth * BASE_HOURLY_RATE).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-                
-                resultDiv.innerHTML = `
-                    <p class="font-bold text-lg text-gov-primary">SIMULAÇÃO BASE DE CUSTO</p>
-                    <p class="mt-2 text-sm">Custo Base Sugerido por Hora: <span class="font-bold text-gov-secondary">R$ ${hourlyCost}</span></p>
-                    <p class="text-sm">Total de Horas/Mês (Aprox.): <span class="font-bold">${totalHoursPerMonth.toFixed(1)}h</span></p>
-                    <p class="text-xl font-extrabold text-green-700 mt-2">Valor Base Mensal: ${monthlyCost}</p>
-                    <p class="text-xs text-gray-500 mt-2">(Estimativa de ${weeklyCost}/semana)</p>
-                `;
-                resultDiv.classList.remove('hidden');
-            });
-
             // --- Carrossel de Imagens ---
             const carousel = document.getElementById('main-carousel');
             const items = carousel.querySelectorAll('.carousel-item');
@@ -567,11 +603,32 @@
             menuToggle.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
+
+            // --- Galeria de Fotos (Modal) ---
+            window.openGallery = function(src, caption) {
+                const modal = document.getElementById('gallery-modal');
+                const img = document.getElementById('gallery-modal-image');
+                const cap = document.getElementById('gallery-modal-caption');
+
+                img.src = src;
+                cap.textContent = caption || '';
+                modal.classList.remove('hidden');
+            };
+
+            window.closeGallery = function() {
+                const modal = document.getElementById('gallery-modal');
+                modal.classList.add('hidden');
+            };
+
+            // Fechar modal ao clicar fora do conteúdo
+            const modal = document.getElementById('gallery-modal');
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    closeGallery();
+                }
+            });
         });
     </script>
 
 </body>
 </html>
-
-                        
-
