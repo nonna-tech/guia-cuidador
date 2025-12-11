@@ -79,14 +79,6 @@
             line-height: 1.5;
             color: #4b5563;
         }
-        /* Estilos de Destaque Adicionais (Conforme solicitado) */
-        .highlight-text-light {
-            color: #007bff; /* Usando gov-secondary */
-        }
-        .highlight-text-dark {
-            color: #ffffff; /* Branco puro para contraste no azul escuro */
-            font-weight: 500;
-        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -95,22 +87,22 @@
     <header>
         <div class="header-bar">
             <div class="main-container flex justify-between items-center px-4 md:px-6">
-                <!-- Título Principal (CONEXÃO CUIDAR) -->
-                <h1 class="text-xl md:text-2xl font-bold tracking-wider highlight-text-light">CONEXÃO CUIDAR</h1>
+                <!-- Título Principal -->
+                <h1 class="text-xl md:text-2xl font-bold tracking-wider text-white">CONEXÃO CUIDAR</h1>
                 
                 <!-- Menu Principal (Desktop) -->
                 <nav class="hidden md:flex space-x-4 text-sm font-medium">
-                    <a href="#home" class="highlight-text-light hover:text-white transition duration-150" onclick="showContent('home-content');">HOME</a>
-                    <a href="#publicacoes" class="highlight-text-light hover:text-white transition duration-150" onclick="showContent('publicacoes');">PUBLICAÇÕES</a>
-                    <a href="#reflexoes" class="highlight-text-light hover:text-white transition duration-150" onclick="showContent('reflexoes');">REFLEXÕES</a>
-                    <a href="#casosaudios" class="highlight-text-light hover:text-white transition duration-150" onclick="showContent('casosaudios');">CASOS & ÁUDIOS</a>
-                    <a href="#ebooks" class="highlight-text-light hover:text-white transition duration-150" onclick="showContent('ebooks');">VENDA DE E-BOOKS</a>
-                    <a href="#suporte" class="highlight-text-light hover:text-white transition duration-150" onclick="showContent('suporte');">SUPORTE</a>
-                    <a href="#contato" class="highlight-text-light hover:text-white transition duration-150" onclick="showContent('contato');">CONTATO</a>
+                    <a href="#home" class="hover:text-gov-secondary transition duration-150" onclick="showContent('home-content');">HOME</a>
+                    <a href="#publicacoes" class="hover:text-gov-secondary transition duration-150" onclick="showContent('publicacoes');">PUBLICAÇÕES</a>
+                    <a href="#reflexoes" class="hover:text-gov-secondary transition duration-150" onclick="showContent('reflexoes');">REFLEXÕES</a>
+                    <a href="#casosaudios" class="hover:text-gov-secondary transition duration-150" onclick="showContent('casosaudios');">CASOS & ÁUDIOS</a>
+                    <a href="#ebooks" class="hover:text-gov-secondary transition duration-150" onclick="showContent('ebooks');">VENDA DE E-BOOKS</a>
+                    <a href="#suporte" class="hover:text-gov-secondary transition duration-150" onclick="showContent('suporte');">SUPORTE</a>
+                    <a href="#contato" class="hover:text-gov-secondary transition duration-150" onclick="showContent('contato');">CONTATO</a>
                 </nav>
                 
                 <!-- Botão de Menu (Mobile) - Funcionalidade simplificada para este exemplo -->
-                <button id="menu-toggle" class="md:hidden highlight-text-light focus:outline-none">
+                <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
@@ -119,8 +111,7 @@
         <!-- Subtítulo / Faixa de Apoio -->
         <div class="bg-gov-primary py-3">
             <div class="main-container px-4 md:px-6">
-                <!-- Subtítulo Destacado -->
-                <p class="text-base md:text-lg highlight-text-dark font-light">O seu portal de apoio sobre a Política Nacional de Cuidados em Passo Fundo/RS.</p>
+                <p class="text-base md:text-lg text-white font-light">O seu portal de apoio sobre a Política Nacional de Cuidados em Passo Fundo/RS.</p>
             </div>
         </div>
     </header>
@@ -128,13 +119,13 @@
     <!-- Menu Mobile (oculto por padrão) -->
     <div id="mobile-menu" class="header-bar md:hidden hidden border-t border-gray-700">
         <nav class="flex flex-col text-sm font-medium p-4 space-y-2">
-            <a href="#home" class="block highlight-text-light hover:text-white transition duration-150" onclick="showContent('home-content');">HOME</a>
-            <a href="#publicacoes" class="block highlight-text-light hover:text-white transition duration-150" onclick="showContent('publicacoes');">PUBLICAÇÕES</a>
-            <a href="#reflexoes" class="block highlight-text-light hover:text-white transition duration-150" onclick="showContent('reflexoes');">REFLEXÕES</a>
-            <a href="#casosaudios" class="block highlight-text-light hover:text-white transition duration-150" onclick="showContent('casosaudios');">CASOS & ÁUDIOS</a>
-            <a href="#ebooks" class="block highlight-text-light hover:text-white transition duration-150" onclick="showContent('ebooks');">VENDA DE E-BOOKS</a>
-            <a href="#suporte" class="block highlight-text-light hover:text-white transition duration-150" onclick="showContent('suporte');">SUPORTE</a>
-            <a href="#contato" class="block highlight-text-light hover:text-white transition duration-150" onclick="showContent('contato');">CONTATO</a>
+            <a href="#home" class="block hover:text-gov-secondary transition duration-150" onclick="showContent('home-content');">HOME</a>
+            <a href="#publicacoes" class="block hover:text-gov-secondary transition duration-150" onclick="showContent('publicacoes');">PUBLICAÇÕES</a>
+            <a href="#reflexoes" class="block hover:text-gov-secondary transition duration-150" onclick="showContent('reflexoes');">REFLEXÕES</a>
+            <a href="#casosaudios" class="block hover:text-gov-secondary transition duration-150" onclick="showContent('casosaudios');">CASOS & ÁUDIOS</a>
+            <a href="#ebooks" class="block hover:text-gov-secondary transition duration-150" onclick="showContent('ebooks');">VENDA DE E-BOOKS</a>
+            <a href="#suporte" class="block hover:text-gov-secondary transition duration-150" onclick="showContent('suporte');">SUPORTE</a>
+            <a href="#contato" class="block hover:text-gov-secondary transition duration-150" onclick="showContent('contato');">CONTATO</a>
         </nav>
     </div>
 
@@ -575,4 +566,3 @@
 
 </body>
 </html>
-               
