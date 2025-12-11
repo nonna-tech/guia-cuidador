@@ -1,62 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-BOOKS - Conexão Cuidar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CONEXÃO CUIDAR - Passo Fundo/RS</title>
     <!-- Carregamento do Tailwind CSS para utilitários de estilo -->
-<script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Configuração do Tailwind para usar uma fonte limpa (Inter) e paleta de cores gov.br-like -->
-<script>
-tailwind.config = {
-theme: {
-extend: {
-colors: {
-                        'gov-primary': '#053259', 
-                        'gov-secondary': '#007bff', 
-                        'gov-accent': '#e6e6e6', 
-                        'gov-red': '#dc3545',
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
                         'gov-primary': '#053259', // Azul escuro, similar ao padrão gov.br
                         'gov-secondary': '#007bff', // Azul de destaque
                         'gov-light': '#f4f4f4', // Cinza claro para fundo
                         'gov-accent': '#e6e6e6', // Cinza de acento
-},
-fontFamily: {
-sans: ['Inter', 'system-ui', 'sans-serif'],
-                        // Adicionando uma fonte alternativa para o título, caso queira mudar o estilo facilmente
-                        // Nota: A fonte 'serif' é usada como fallback para dar um estilo mais forte.
-title: ['Georgia', 'serif'], 
-}
-}
-}
-}
-</script>
-<style>
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
         /* Estilos personalizados para replicar o layout de blocos do modelo anexo */
-body {
-font-family: 'Inter', sans-serif;
-            background-color: #f4f4f4;
+        body {
+            font-family: 'Inter', sans-serif;
             background-color: #e9ecef; /* Fundo geral muito claro */
-}
-.header-bar {
-            background-color: #053259;
+        }
+        .header-bar {
             background-color: #212529; /* Barra superior escura */
-color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: white;
             padding-top: 0.5rem;
             padding-bottom: 0.5rem;
-}
-.main-container {
-            max-width: 900px;
-            margin: 40px auto;
+        }
+        .main-container {
             max-width: 1280px;
             margin: auto;
-background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            background-color: white;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .sidebar-right {
@@ -96,34 +79,24 @@ background-color: white;
             line-height: 1.5;
             color: #4b5563;
         }
-        /* Estilos de Destaque Adicionais */
+        /* Estilos de Destaque Adicionais (Conforme solicitado) */
         .highlight-text-light {
-            color: #007bff; /* Azul de destaque no fundo escuro */
+            color: #007bff; /* Usando gov-secondary */
         }
-        /* Subtítulo na faixa azul escura, agora em branco puro e mais forte */
         .highlight-text-dark {
-            color: #ffffff; 
-            font-weight: 600; /* Aumenta o peso para melhor leitura */
+            color: #ffffff; /* Branco puro para contraste no azul escuro */
+            font-weight: 500;
         }
-        /* Título Principal com fonte diferente e ainda mais contraste */
-        .site-title {
-            font-family: 'title', sans-serif;
-            color: #ffffff; /* Branco, para contraste máximo com fundo #212529 */
-            font-size: 1.5rem; /* Aumenta um pouco mais no desktop/mobile */
-}
-</style>
+    </style>
 </head>
 <body class="text-gray-800">
 
-    <header class="header-bar">
-        <div class="max-w-7xl mx-auto px-4 md:px-6">
-            <h1 class="text-2xl font-bold text-white">VENDA DE E-BOOKS E MATERIAIS</h1>
     <!-- 1. BARRA SUPERIOR E NAVEGAÇÃO PRINCIPAL -->
     <header>
         <div class="header-bar">
             <div class="main-container flex justify-between items-center px-4 md:px-6">
-                <!-- Título Principal (CONEXÃO CUIDAR) - Usando nova classe de estilo -->
-                <h1 class="text-xl md:text-2xl font-bold tracking-wider site-title">CONEXÃO CUIDAR</h1>
+                <!-- Título Principal (CONEXÃO CUIDAR) -->
+                <h1 class="text-xl md:text-2xl font-bold tracking-wider highlight-text-light">CONEXÃO CUIDAR</h1>
                 
                 <!-- Menu Principal (Desktop) -->
                 <nav class="hidden md:flex space-x-4 text-sm font-medium">
@@ -141,33 +114,14 @@ background-color: white;
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
-</div>
-    </header>
+        </div>
 
-    <div class="main-container">
-        <h2 class="text-3xl font-bold text-gov-primary mb-6 border-b pb-3">Materiais Exclusivos para Cuidadores e Profissionais</h2>
-        
-        <p class="text-gray-600 mb-8">Aqui você encontra e-books, guias e materiais de estudo essenciais sobre a legislação do cuidado e proteção dos idosos e cuidadores.</p>
-
-        <!-- Lista de E-books -->
-        <div class="space-y-6">
-            
-            <!-- Ebook 1 -->
-            <div class="flex items-center bg-gray-50 p-4 rounded-lg border border-gov-accent hover:shadow-md transition">
-                <div class="flex-shrink-0 w-16 h-16 bg-gov-secondary text-white rounded-md flex items-center justify-center font-bold text-xl mr-4">PDF</div>
-                <div class="flex-grow">
-                    <h3 class="text-lg font-bold text-gov-primary">Guia Prático da Política Nacional de Cuidados (PNC)</h3>
-                    <p class="text-sm text-gray-600">Um resumo completo sobre a implementação e seus direitos em Passo Fundo/RS.</p>
-                </div>
-                <a href="./assets/ebooks/guia_pnc.pdf" target="_blank" class="bg-gov-red text-white py-2 px-4 rounded-md font-bold hover:bg-red-700 transition duration-200 ml-4">
-                    Comprar / Acessar
-                </a>
         <!-- Subtítulo / Faixa de Apoio -->
         <div class="bg-gov-primary py-3">
             <div class="main-container px-4 md:px-6">
-                <!-- Subtítulo Destacado (usando highlight-text-dark e mais peso) -->
+                <!-- Subtítulo Destacado -->
                 <p class="text-base md:text-lg highlight-text-dark font-light">O seu portal de apoio sobre a Política Nacional de Cuidados em Passo Fundo/RS.</p>
-</div>
+            </div>
         </div>
     </header>
 
@@ -300,17 +254,7 @@ background-color: white;
                         </div>
                     </div>
 
-            <!-- Ebook 2 -->
-            <div class="flex items-center bg-gray-50 p-4 rounded-lg border border-gov-accent hover:shadow-md transition">
-                <div class="flex-shrink-0 w-16 h-16 bg-gov-secondary text-white rounded-md flex items-center justify-center font-bold text-xl mr-4">PDF</div>
-                <div class="flex-grow">
-                    <h3 class="text-lg font-bold text-gov-primary">Direitos do Idoso: O Estatuto e o Papel do Cuidador</h3>
-                    <p class="text-sm text-gray-600">Análise jurídica essencial para evitar abusos e garantir a proteção legal.</p>
-</div>
-                <a href="./assets/ebooks/direitos_idoso.pdf" target="_blank" class="bg-gov-red text-white py-2 px-4 rounded-md font-bold hover:bg-red-700 transition duration-200 ml-4">
-                    Comprar / Acessar
-                </a>
-            </div>
+                </div>
                 
                 <!-- COLUNA LATERAL (1/3 da Largura no Desktop) -->
                 <div class="w-full lg:w-4/12 sidebar-right p-6 rounded-lg shadow-md space-y-6">
@@ -377,26 +321,10 @@ background-color: white;
                         </div>
                     </div>
 
-            <!-- Ebook 3 -->
-            <div class="flex items-center bg-gray-50 p-4 rounded-lg border border-gov-accent hover:shadow-md transition">
-                <div class="flex-shrink-0 w-16 h-16 bg-gov-secondary text-white rounded-md flex items-center justify-center font-bold text-xl mr-4">PDF</div>
-                <div class="flex-grow">
-                    <h3 class="text-lg font-bold text-gov-primary">Modelos de Contrato de Cuidador Remunerado</h3>
-                    <p class="text-sm text-gray-600">Material para profissionais: como formalizar a relação de trabalho com segurança.</p>
-</div>
-                <a href="./assets/ebooks/modelos_contrato.pdf" target="_blank" class="bg-gov-red text-white py-2 px-4 rounded-md font-bold hover:bg-red-700 transition duration-200 ml-4">
-                    Comprar / Acessar
-                </a>
-</div>
-
-</div>
-
-        <div class="mt-10 p-4 bg-gov-primary text-white rounded-lg text-sm">
-            **Como anexar seus E-books no GitHub:**
-            1. No seu repositório `guia-cuidador`, crie uma nova pasta chamada `assets`.
-            2. Dentro de `assets`, crie outra pasta chamada `ebooks`.
-            3. Faça o upload dos seus arquivos PDF (ex: `guia_pnc.pdf`, `direitos_idoso.pdf`, `modelos_contrato.pdf`) para essa pasta `ebooks`.
-            4. Os links deste arquivo `ebooks_list.html` já estão configurados para esses caminhos.
+                </div>
+            </div>
+        </div>
+        
         <!-- SEÇÕES EXTRAS DE CONTEÚDO (Outras Páginas/Views) -->
         <section id="publicacoes" class="content-view px-4 md:px-6 hidden"><h2>PÁGINA: PUBLICAÇÕES</h2><p>Artigos formais, notícias e reportagens externas sobre a Política Nacional de Cuidados.</p></section>
         <section id="reflexoes" class="content-view px-4 md:px-6 hidden"><h2>PÁGINA: REFLEXÕES</h2><p>Meus artigos de opinião, análises e reflexões pessoais sobre a vivência do cuidado e temas éticos.</p></section>
@@ -535,9 +463,7 @@ background-color: white;
                 <a href="#contato" class="hover:text-gov-secondary">Contato</a>
                 <a href="#sobre" class="hover:text-gov-secondary">Sobre Nós</a>
             </nav>
-</div>
-        
-    </div>
+        </div>
     </footer>
 
     <!-- JAVASCRIPT: Lógica da Calculadora, Citação Dinâmica, Carrossel e Navegação -->
@@ -649,3 +575,4 @@ background-color: white;
 
 </body>
 </html>
+               
