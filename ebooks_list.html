@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-BOOKS - Conexão Cuidar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'gov-primary': '#053259', 
+                        'gov-secondary': '#007bff', 
+                        'gov-accent': '#e6e6e6', 
+                        'gov-red': '#dc3545',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        title: ['Georgia', 'serif'], 
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f4f4;
+        }
+        .header-bar {
+            background-color: #053259;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .main-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="header-bar">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <h1 class="text-2xl font-bold text-white">VENDA DE E-BOOKS E MATERIAIS</h1>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <h2 class="text-3xl font-bold text-gov-primary mb-6 border-b pb-3">Materiais Exclusivos para Cuidadores e Profissionais</h2>
+        
+        <p class="text-gray-600 mb-8">Aqui você encontra e-books, guias e materiais de estudo essenciais sobre a legislação do cuidado e proteção dos idosos e cuidadores.</p>
+
+        <!-- Lista de E-books -->
+        <div class="space-y-6">
+            
+            <!-- Ebook 1 -->
+            <div class="flex items-center bg-gray-50 p-4 rounded-lg border border-gov-accent hover:shadow-md transition">
+                <div class="flex-shrink-0 w-16 h-16 bg-gov-secondary text-white rounded-md flex items-center justify-center font-bold text-xl mr-4">PDF</div>
+                <div class="flex-grow">
+                    <h3 class="text-lg font-bold text-gov-primary">Guia Prático da Política Nacional de Cuidados (PNC)</h3>
+                    <p class="text-sm text-gray-600">Um resumo completo sobre a implementação e seus direitos em Passo Fundo/RS.</p>
+                </div>
+                <a href="./assets/ebooks/guia_pnc.pdf" target="_blank" class="bg-gov-red text-white py-2 px-4 rounded-md font-bold hover:bg-red-700 transition duration-200 ml-4">
+                    Comprar / Acessar
+                </a>
+            </div>
+
+            <!-- Ebook 2 -->
+            <div class="flex items-center bg-gray-50 p-4 rounded-lg border border-gov-accent hover:shadow-md transition">
+                <div class="flex-shrink-0 w-16 h-16 bg-gov-secondary text-white rounded-md flex items-center justify-center font-bold text-xl mr-4">PDF</div>
+                <div class="flex-grow">
+                    <h3 class="text-lg font-bold text-gov-primary">Direitos do Idoso: O Estatuto e o Papel do Cuidador</h3>
+                    <p class="text-sm text-gray-600">Análise jurídica essencial para evitar abusos e garantir a proteção legal.</p>
+                </div>
+                <a href="./assets/ebooks/direitos_idoso.pdf" target="_blank" class="bg-gov-red text-white py-2 px-4 rounded-md font-bold hover:bg-red-700 transition duration-200 ml-4">
+                    Comprar / Acessar
+                </a>
+            </div>
+
+            <!-- Ebook 3 -->
+            <div class="flex items-center bg-gray-50 p-4 rounded-lg border border-gov-accent hover:shadow-md transition">
+                <div class="flex-shrink-0 w-16 h-16 bg-gov-secondary text-white rounded-md flex items-center justify-center font-bold text-xl mr-4">PDF</div>
+                <div class="flex-grow">
+                    <h3 class="text-lg font-bold text-gov-primary">Modelos de Contrato de Cuidador Remunerado</h3>
+                    <p class="text-sm text-gray-600">Material para profissionais: como formalizar a relação de trabalho com segurança.</p>
+                </div>
+                <a href="./assets/ebooks/modelos_contrato.pdf" target="_blank" class="bg-gov-red text-white py-2 px-4 rounded-md font-bold hover:bg-red-700 transition duration-200 ml-4">
+                    Comprar / Acessar
+                </a>
+            </div>
+
+        </div>
+        
+        <div class="mt-10 p-4 bg-gov-primary text-white rounded-lg text-sm">
+            **Como anexar seus E-books no GitHub:**
+            1. No seu repositório `guia-cuidador`, crie uma nova pasta chamada `assets`.
+            2. Dentro de `assets`, crie outra pasta chamada `ebooks`.
+            3. Faça o upload dos seus arquivos PDF (ex: `guia_pnc.pdf`, `direitos_idoso.pdf`, `modelos_contrato.pdf`) para essa pasta `ebooks`.
+            4. Os links deste arquivo `ebooks_list.html` já estão configurados para esses caminhos.
+        </div>
+        
+    </div>
+
+</body>
+</html>
