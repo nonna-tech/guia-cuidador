@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "titulo": "O que é a Política Nacional de Cuidados (PNC)?",
+    "descricao": "A PNC é uma política pública que busca organizar e reconhecer o trabalho de cuidado no Brasil, garantindo apoio, direitos e serviços às pessoas que cuidam e às que precisam de cuidado."
+  },
+  {
+    "id": 2,
+    "titulo": "Quem são os cuidadores familiares?",
+    "descricao": "Pessoas, geralmente da família, que prestam cuidado diário sem capacitação formal. Representam a maioria dos cuidadores no Brasil e precisam de suporte, orientação e descanso."
+  },
+  {
+    "id": 3,
+    "titulo": "Idosos como prioridade na PNC",
+    "descricao": "A PNC reconhece que idosos são um dos principais grupos que necessitam de cuidados contínuos. A política busca garantir que tenham acesso a serviços humanizados e apoio comunitário."
+  },
+  {
+    "id": 4,
+    "titulo": "Conexão Cuidar — Nossa Missão",
+    "descricao": "Promover informação clara, apoio prático e mobilização social para que a cidade implemente a PNC. Nossa atuação é cidadã, independente e comunitária."
+  },
+  {
+    "id": 5,
+    "titulo": "Recursos úteis para cuidadores",
+    "descricao": "Links e materiais sobre cuidados domiciliares, prevenção de quedas, primeiros socorros, apoio emocional, autocuidado de cuidadores e direitos trabalhistas."
+  },
+  {
+    "id": 6,
+    "titulo": "Por que regulamentar a PNC em Passo Fundo?",
+    "descricao": "Sem regulamentação local, a política não se torna prática. Lutamos por estrutura, financiamento e garantia real de serviços que beneficiem idosos, famílias e profissionais."
+  }
+]
