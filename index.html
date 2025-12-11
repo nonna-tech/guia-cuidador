@@ -3,24 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CONEXÃO CUIDAR - Passo Fundo/RS</title>
-    <!-- Carregamento do Tailwind CSS para utilitários de estilo -->
+    <title>E-BOOKS - Conexão Cuidar</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configuração do Tailwind para usar uma fonte limpa (Inter) e paleta de cores gov.br-like -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'gov-primary': '#053259', // Azul escuro, similar ao padrão gov.br
-                        'gov-secondary': '#007bff', // Azul de destaque
-                        'gov-light': '#f4f4f4', // Cinza claro para fundo
-                        'gov-accent': '#e6e6e6', // Cinza de acento
+                        'gov-primary': '#053259', 
+                        'gov-secondary': '#007bff', 
+                        'gov-accent': '#e6e6e6', 
+                        'gov-red': '#dc3545',
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
-                        // Adicionando uma fonte alternativa para o título, caso queira mudar o estilo facilmente
-                        // Nota: A fonte 'serif' é usada como fallback para dar um estilo mais forte.
                         title: ['Georgia', 'serif'], 
                     }
                 }
@@ -28,560 +24,89 @@
         }
     </script>
     <style>
-        /* Estilos personalizados para replicar o layout de blocos do modelo anexo */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #e9ecef; /* Fundo geral muito claro */
+            background-color: #f4f4f4;
         }
         .header-bar {
-            background-color: #212529; /* Barra superior escura */
+            background-color: #053259;
             color: white;
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .main-container {
-            max-width: 1280px;
-            margin: auto;
+            max-width: 900px;
+            margin: 40px auto;
             background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .sidebar-right {
-            background-color: #f0f0f0; /* Fundo cinza claro para a barra lateral */
-        }
-        .block-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #053259;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 0.25rem;
-        }
-        .quote-box {
-            /* Cor de destaque azul suave para manter o padrão gov.br */
-            background-color: #007bff1a; 
-            border-left: 5px solid #007bff;
-            color: #053259;
-        }
-        /* Estilos para o Carrossel (Carousel) */
-        .carousel-item {
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-        .carousel-item.active {
-            opacity: 1;
-            position: relative;
-        }
-        /* Estilo para rodapé da citação (para evitar quebras de linha em números) */
-        .citation-footer {
-            display: block;
-            margin-top: 1rem;
-            font-size: 0.75rem;
-            line-height: 1.5;
-            color: #4b5563;
-        }
-        /* Estilos de Destaque Adicionais */
-        .highlight-text-light {
-            color: #007bff; /* Azul de destaque no fundo escuro */
-        }
-        /* Subtítulo na faixa azul escura, agora em branco puro e mais forte */
-        .highlight-text-dark {
-            color: #ffffff; 
-            font-weight: 600; /* Aumenta o peso para melhor leitura */
-        }
-        /* Título Principal com fonte diferente e ainda mais contraste */
-        .site-title {
-            font-family: 'title', sans-serif;
-            color: #ffffff; /* Branco, para contraste máximo com fundo #212529 */
-            font-size: 1.5rem; /* Aumenta um pouco mais no desktop/mobile */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body class="text-gray-800">
 
-    <!-- 1. BARRA SUPERIOR E NAVEGAÇÃO PRINCIPAL -->
-    <header>
-        <div class="header-bar">
-            <div class="main-container flex justify-between items-center px-4 md:px-6">
-                <!-- Título Principal (CONEXÃO CUIDAR) - Usando nova classe de estilo -->
-                <h1 class="text-xl md:text-2xl font-bold tracking-wider site-title">CONEXÃO CUIDAR</h1>
-                
-                <!-- Menu Principal (Desktop) -->
-                <nav class="hidden md:flex space-x-4 text-sm font-medium">
-                    <a href="#home" class="highlight-text-light hover:text-white transition duration-150" onclick="showContent('home-content');">HOME</a>
-                    <a href="#publicacoes" class="highlight-text-light hover:text-white transition duration-150" onclick="showContent('publicacoes');">PUBLICAÇÕES</a>
-                    <a href="#reflexoes" class="highlight-text-light hover:text-white transition duration-150" onclick="showContent('reflexoes');">REFLEXÕES</a>
-                    <a href="#casosaudios" class="highlight-text-light hover:text-white transition duration-150" onclick="showContent('casosaudios');">CASOS & ÁUDIOS</a>
-                    <a href="#ebooks" class="highlight-text-light hover:text-white transition duration-150" onclick="showContent('ebooks');">VENDA DE E-BOOKS</a>
-                    <a href="#suporte" class="highlight-text-light hover:text-white transition duration-150" onclick="showContent('suporte');">SUPORTE</a>
-                    <a href="#contato" class="highlight-text-light hover:text-white transition duration-150" onclick="showContent('contato');">CONTATO</a>
-                </nav>
-                
-                <!-- Botão de Menu (Mobile) - Funcionalidade simplificada para este exemplo -->
-                <button id="menu-toggle" class="md:hidden highlight-text-light focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </button>
-            </div>
-        </div>
-
-        <!-- Subtítulo / Faixa de Apoio -->
-        <div class="bg-gov-primary py-3">
-            <div class="main-container px-4 md:px-6">
-                <!-- Subtítulo Destacado (usando highlight-text-dark e mais peso) -->
-                <p class="text-base md:text-lg highlight-text-dark font-light">O seu portal de apoio sobre a Política Nacional de Cuidados em Passo Fundo/RS.</p>
-            </div>
+    <header class="header-bar">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <h1 class="text-2xl font-bold text-white">VENDA DE E-BOOKS E MATERIAIS</h1>
         </div>
     </header>
 
-    <!-- Menu Mobile (oculto por padrão) -->
-    <div id="mobile-menu" class="header-bar md:hidden hidden border-t border-gray-700">
-        <nav class="flex flex-col text-sm font-medium p-4 space-y-2">
-            <a href="#home" class="block highlight-text-light hover:text-white transition duration-150" onclick="showContent('home-content');">HOME</a>
-            <a href="#publicacoes" class="block highlight-text-light hover:text-white transition duration-150" onclick="showContent('publicacoes');">PUBLICAÇÕES</a>
-            <a href="#reflexoes" class="block highlight-text-light hover:text-white transition duration-150" onclick="showContent('reflexoes');">REFLEXÕES</a>
-            <a href="#casosaudios" class="block highlight-text-light hover:text-white transition duration-150" onclick="showContent('casosaudios');">CASOS & ÁUDIOS</a>
-            <a href="#ebooks" class="block highlight-text-light hover:text-white transition duration-150" onclick="showContent('ebooks');">VENDA DE E-BOOKS</a>
-            <a href="#suporte" class="block highlight-text-light hover:text-white transition duration-150" onclick="showContent('suporte');">SUPORTE</a>
-            <a href="#contato" class="block highlight-text-light hover:text-white transition duration-150" onclick="showContent('contato');">CONTATO</a>
-        </nav>
-    </div>
+    <div class="main-container">
+        <h2 class="text-3xl font-bold text-gov-primary mb-6 border-b pb-3">Materiais Exclusivos para Cuidadores e Profissionais</h2>
+        
+        <p class="text-gray-600 mb-8">Aqui você encontra e-books, guias e materiais de estudo essenciais sobre a legislação do cuidado e proteção dos idosos e cuidadores.</p>
 
-    <!-- CONTEÚDO PRINCIPAL (Home Page) -->
-    <main class="main-container min-h-screen pt-4 pb-10">
-
-        <!-- CONTEÚDO DA HOME (Visível por padrão) -->
-        <div id="home-content" class="content-view">
-            <div class="flex flex-col lg:flex-row px-4 md:px-6 gap-6">
-
-                <!-- COLUNA PRINCIPAL (2/3 da Largura no Desktop) -->
-                <div class="w-full lg:w-8/12 space-y-6">
-
-                    <!-- Bloco Principal: Carrossel de Imagens de Destaque (BUSCANDO ARQUIVOS LOCAIS) -->
-                    <!-- IMPORTANTE: Suba imagem1.jpg, imagem2.jpg, imagem3.jpg e imagem4.jpg para a pasta ./assets/ -->
-                    <div id="main-carousel" class="relative rounded-lg overflow-hidden shadow-lg h-64 md:h-96">
-                        
-                        <!-- Item 1 (Visível por padrão) -->
-                        <div class="carousel-item active">
-                            <img src="./assets/imagem1.jpg" 
-                                 onerror="this.onerror=null; this.src='https://placehold.co/1000x500/053259/ffffff?text=CONEXÃO+CUIDAR%0AImagem+1+Ausente';" 
-                                 alt="Imagem conceitual de cuidado 1" 
-                                 class="w-full h-full object-cover opacity-90">
-                        </div>
-                        
-                        <!-- Item 2 -->
-                        <div class="carousel-item">
-                            <img src="./assets/imagem2.jpg" 
-                                 onerror="this.onerror=null; this.src='https://placehold.co/1000x500/007bff/ffffff?text=CONEXÃO+CUIDAR%0AImagem+2+Ausente';" 
-                                 alt="Imagem conceitual de cuidado 2" 
-                                 class="w-full h-full object-cover opacity-90">
-                        </div>
-
-                        <!-- Item 3 -->
-                        <div class="carousel-item">
-                            <img src="./assets/imagem3.jpg" 
-                                 onerror="this.onerror=null; this.src='https://placehold.co/1000x500/053259/ffffff?text=CONEXÃO+CUIDAR%0AImagem+3+Ausente';" 
-                                 alt="Imagem conceitual de cuidado 3" 
-                                 class="w-full h-full object-cover opacity-90">
-                        </div>
-
-                        <!-- Item 4 -->
-                        <div class="carousel-item">
-                            <img src="./assets/imagem4.jpg" 
-                                 onerror="this.onerror=null; this.src='https://placehold.co/1000x500/007bff/ffffff?text=CONEXÃO+CUIDAR%0AImagem+4+Ausente';" 
-                                 alt="Imagem conceitual de cuidado 4" 
-                                 class="w-full h-full object-cover opacity-90">
-                        </div>
-                        
-                        <!-- Overlay de Texto Fixo -->
-                        <div class="absolute inset-0 bg-gov-primary bg-opacity-30 flex items-end">
-                            <div class="p-6 text-white w-full">
-                                <span class="text-xl md:text-3xl font-bold">Iniciativa Cidadã Passo Fundo</span>
-                                <p class="text-sm mt-1">Trabalhando pela regulamentação e informação da Política Nacional de Cuidados.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- SEÇÃO 1: VÍDEOS E REFERÊNCIAS (Adaptação horizontal) -->
-                    <div class="flex flex-col md:flex-row gap-6">
-                        
-                        <!-- VÍDEOS: CANAL CONEXÃO CUIDAR (COM EMBED DO YOUTUBE) -->
-                        <div class="w-full md:w-1/2 p-4 border rounded-lg bg-white shadow-sm">
-                            <h2 class="block-title">VÍDEOS: CANAL CONEXÃO CUIDAR</h2>
-                            
-                            <!-- Embed do vídeo do YouTube (PDdSx8w8AYo) -->
-                            <div class="aspect-w-16 aspect-h-9 bg-gray-200 flex items-center justify-center rounded overflow-hidden">
-                                <iframe 
-                                    width="100%" 
-                                    height="100%" 
-                                    src="https://www.youtube.com/embed/PDdSx8w8AYo" 
-                                    frameborder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen
-                                    class="w-full h-full">
-                                </iframe>
-                            </div>
-                            <a href="https://www.youtube.com/channel/seu-canal-aqui" target="_blank" class="mt-2 block text-gov-secondary hover:underline text-sm">Acesse nosso canal completo no YouTube</a>
-                        </div>
-                        
-                        <!-- REFERÊNCIAS: PONTOS DE APOIO EM PASSO FUNDO (LINKS ATUALIZADOS) -->
-                        <div class="w-full md:w-1/2 p-4 border rounded-lg bg-white shadow-sm">
-                            <h2 class="block-title">REFERÊNCIAS: PONTOS DE APOIO EM PASSO FUNDO</h2>
-                            <ul class="list-disc list-inside space-y-1 text-sm">
-                                <li>Balcão da Pessoa Idosa/UPF: <a href="https://www.upf.br/extensao/projetos-programa/balcao-da-pessoa-idosa" target="_blank" class="text-gov-secondary hover:underline">Acesse o Portal</a></li>
-                                <li>Delegacia do Idoso: <a href="https://www.pc.rs.gov.br/delegacia-do-idoso" target="_blank" class="text-gov-secondary hover:underline">Site Oficial</a></li>
-                                <li>Ministério Público/Promotoria do Idoso: <a href="#" class="text-gov-secondary hover:underline">Endereço & Contato</a></li>
-                                <li>INSS - Passo Fundo: <a href="#" class="text-gov-secondary hover:underline">Agendamento</a></li>
-                                <li class="mt-2 text-xs text-gray-500">Links de referência para serviços essenciais.</li>
-                            </ul>
-                        </div>
-
-                    </div>
-
-                    <!-- SEÇÃO 2: PUBLICAÇÕES e QUEM CUIDA DE VOCÊ? (Adaptação horizontal) -->
-                    <div class="flex flex-col md:flex-row gap-6">
-                        
-                        <!-- DESTAQUES: PUBLICAÇÕES E ARTIGOS (Artigo 5 agora clica e abre o artigo completo) -->
-                        <div class="w-full md:w-1/2 p-4 border rounded-lg bg-white shadow-sm">
-                            <h2 class="block-title">DESTAQUES: PUBLICAÇÕES E ARTIGOS</h2>
-                            <ul class="list-disc list-inside space-y-2 text-sm">
-                                <!-- Link para o artigo completo, usando a função showContent() no JS -->
-                                <li><a href="#full-article-view" class="text-gov-primary hover:text-gov-secondary font-medium" onclick="showContent('full-article-view');">Artigo 5: Distinção entre trabalho doméstico e de cuidado: perspectivas jurídicas e sociais</a></li>
-                                <li><a href="#artigo4" class="text-gov-primary hover:text-gov-secondary font-medium">Publicação 4: Panorama da PNC em 2024</a></li>
-                                <li><a href="#artigo3" class="text-gov-primary hover:text-gov-secondary font-medium">Artigo 3: Direitos e Deveres do Cuidador Informal</a></li>
-                                <li><a href="#artigo2" class="text-gov-primary hover:text-gov-secondary font-medium">Publicação 2: Impacto da Solidão na Terceira Idade</a></li>
-                                <li><a href="#artigo1" class="text-gov-primary hover:text-gov-secondary font-medium">Artigo 1: Análise da Lei 13.560/2017</a></li>
-                                <li><a href="#ver-todos" class="text-gov-secondary font-bold mt-2 inline-block hover:underline">Ver todos (65)</a></li>
-                            </ul>
-                        </div>
-                        
-                        <!-- QUEM CUIDA DE VOCÊ? (200 ANOS DE HISTÓRIA) -->
-                        <div class="w-full md:w-1/2 p-4 border rounded-lg bg-white shadow-sm">
-                            <h2 class="block-title">QUEM CUIDA DE VOCÊ?</h2>
-                            <p class="text-sm leading-relaxed text-justify">A "Conexão Cuidar" é uma iniciativa cidadã nascida em Passo Fundo/RS, dedicada a fornecer informações transparentes e apoio prático sobre a implementação e o impacto da Política Nacional de Cuidados (PNC). Nosso objetivo é ser um ponto de referência para idosos, cuidadores familiares e profissionais, promovendo a dignidade e o bem-estar da comunidade. Atuamos como um canal de resposta e mobilização frente à necessidade de regulamentação local da PNC.</p>
-                            <a href="#sobre" class="mt-2 block text-gov-secondary hover:underline text-sm font-medium">Saiba mais sobre a nossa missão</a>
-                        </div>
-                    </div>
-
+        <!-- Lista de E-books -->
+        <div class="space-y-6">
+            
+            <!-- Ebook 1 -->
+            <div class="flex items-center bg-gray-50 p-4 rounded-lg border border-gov-accent hover:shadow-md transition">
+                <div class="flex-shrink-0 w-16 h-16 bg-gov-secondary text-white rounded-md flex items-center justify-center font-bold text-xl mr-4">PDF</div>
+                <div class="flex-grow">
+                    <h3 class="text-lg font-bold text-gov-primary">Guia Prático da Política Nacional de Cuidados (PNC)</h3>
+                    <p class="text-sm text-gray-600">Um resumo completo sobre a implementação e seus direitos em Passo Fundo/RS.</p>
                 </div>
-                
-                <!-- COLUNA LATERAL (1/3 da Largura no Desktop) -->
-                <div class="w-full lg:w-4/12 sidebar-right p-6 rounded-lg shadow-md space-y-6">
-                    
-                    <!-- Bloco: Espaço para Citação Dinâmica (CITAÇÃO) -->
-                    <div class="quote-box p-4 rounded-md">
-                        <p id="dynamic-quote" class="text-lg italic font-serif leading-relaxed">"O cuidado é uma teia social que nos conecta, mas a política precisa dar o nó final."</p>
-                        <cite id="quote-source" class="block mt-2 text-right text-sm font-medium not-italic">- Especialista Anônimo</cite>
-                    </div>
-
-                    <!-- Bloco: CÁLCULO E SIMULAÇÃO DE CUSTOS DE CUIDADO (FAÇA UMA VISITA) -->
-                    <div class="bg-white p-4 rounded-lg shadow-sm border">
-                        <h2 class="block-title">CÁLCULO E SIMULAÇÃO DE CUSTOS DE CUIDADO</h2>
-                        <div class="space-y-3 text-sm">
-                            <div>
-                                <label for="daily-hours" class="block font-medium mb-1">Horas Diárias:</label>
-                                <input type="number" id="daily-hours" min="1" max="24" value="8" class="w-full p-2 border border-gray-300 rounded focus:border-gov-secondary focus:ring focus:ring-gov-secondary focus:ring-opacity-50">
-                            </div>
-                            <div>
-                                <label for="weekly-days" class="block font-medium mb-1">Dias na Semana:</label>
-                                <input type="number" id="weekly-days" min="1" max="7" value="5" class="w-full p-2 border border-gray-300 rounded focus:border-gov-secondary focus:ring focus:ring-gov-secondary focus:ring-opacity-50">
-                            </div>
-                            <button id="simulate-button" class="w-full bg-gov-secondary text-white font-bold py-2 rounded-md hover:bg-gov-primary transition duration-200">
-                                SIMULAR VALOR BASE
-                            </button>
-                            
-                            <div id="simulation-result" class="mt-4 text-center p-3 rounded-md border border-gov-accent bg-gray-50 hidden">
-                                <!-- Resultados serão inseridos aqui -->
-                            </div>
-
-                            <p class="text-xs text-red-600 mt-3 text-justify">
-                                **DISCLAIMER:** Este valor é uma SIMULAÇÃO BASEADA em uma tabela de referência e **não** constitui um preço de mercado ou obrigação legal. Consulte profissionais e a legislação local para custos reais.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <!-- NOVO BLOCO: APROFUNDE O CONHECIMENTO (Substitui a Galeria) -->
-                    <div class="bg-white p-4 rounded-lg shadow-sm border">
-                        <h2 class="block-title">APROFUNDE O CONHECIMENTO</h2>
-                        <p class="text-sm mb-3">Acesse materiais exclusivos, e-books e análises jurídicas detalhadas para se aprofundar na Política Nacional de Cuidados e seus impactos.</p>
-                        <a href="#ebooks" class="block text-center bg-gov-primary text-white font-bold py-3 rounded-md hover:bg-gov-secondary transition duration-200 shadow-lg">
-                            <svg class="w-5 h-5 inline-block mr-2 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.202 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.8 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.8 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.2 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
-                            VISITAR PÁGINA DE E-BOOKS
-                        </a>
-                        <a href="#suporte" class="mt-2 block text-center text-gov-primary hover:underline text-xs font-medium">Ver opções de Suporte e Voluntariado</a>
-                    </div>
-
-                    <!-- Bloco: Ícones das Redes Sociais -->
-                    <div class="p-4 rounded-lg shadow-sm border bg-white text-center">
-                        <h2 class="block-title mb-3 border-none pb-0">SIGA NOSSAS REDES</h2>
-                        <div class="flex justify-center space-x-6">
-                            <!-- Facebook Icon -->
-                            <a href="https://facebook.com/seu-perfil" target="_blank" class="text-gov-primary hover:text-gov-secondary transition duration-150">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                            </a>
-                            <!-- Instagram Icon -->
-                            <a href="https://instagram.com/seu-perfil" target="_blank" class="text-gov-primary hover:text-gov-secondary transition duration-150">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
-                            </a>
-                            <!-- WhatsApp Icon -->
-                            <a href="https://wa.me/seu-numero" target="_blank" class="text-gov-primary hover:text-gov-secondary transition duration-150">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.47 2 2 6.47 2 12c0 3.31 1.58 6.27 4.04 8.21l-.64 2.14 2.2-.64C9.57 21.42 10.77 22 12 22c5.53 0 10-4.47 10-10S17.53 2 12 2zm3.17 14.54l-1.89-1.11c-.38-.22-.84-.33-1.32-.33-.48 0-.94.11-1.32.33l-1.89 1.11c-.72.43-1.63.14-2.06-.58l-.58-1.02c-.43-.72-.14-1.63.58-2.06l1.11-1.89c.22-.38.33-.84.33-1.32s-.11-.94-.33-1.32l-1.11-1.89c-.43-.72-.14-1.63.58-2.06l1.02-.58c.72-.43 1.63-.14 2.06.58l1.89 1.11c.38.22.84.33 1.32.33.48 0 .94-.11 1.32-.33l1.89-1.11c.72-.43 1.63-.14 2.06.58l.58 1.02c.43.72.14 1.63-.58 2.06l-1.11 1.89c-.22.38-.33.84-.33 1.32s.11.94.33 1.32l1.11 1.89c.43.72.14 1.63-.58 2.06l-1.02.58c-.72.43-1.63.14-2.06-.58z"></path></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
+                <a href="./assets/ebooks/guia_pnc.pdf" target="_blank" class="bg-gov-red text-white py-2 px-4 rounded-md font-bold hover:bg-red-700 transition duration-200 ml-4">
+                    Comprar / Acessar
+                </a>
             </div>
+
+            <!-- Ebook 2 -->
+            <div class="flex items-center bg-gray-50 p-4 rounded-lg border border-gov-accent hover:shadow-md transition">
+                <div class="flex-shrink-0 w-16 h-16 bg-gov-secondary text-white rounded-md flex items-center justify-center font-bold text-xl mr-4">PDF</div>
+                <div class="flex-grow">
+                    <h3 class="text-lg font-bold text-gov-primary">Direitos do Idoso: O Estatuto e o Papel do Cuidador</h3>
+                    <p class="text-sm text-gray-600">Análise jurídica essencial para evitar abusos e garantir a proteção legal.</p>
+                </div>
+                <a href="./assets/ebooks/direitos_idoso.pdf" target="_blank" class="bg-gov-red text-white py-2 px-4 rounded-md font-bold hover:bg-red-700 transition duration-200 ml-4">
+                    Comprar / Acessar
+                </a>
+            </div>
+
+            <!-- Ebook 3 -->
+            <div class="flex items-center bg-gray-50 p-4 rounded-lg border border-gov-accent hover:shadow-md transition">
+                <div class="flex-shrink-0 w-16 h-16 bg-gov-secondary text-white rounded-md flex items-center justify-center font-bold text-xl mr-4">PDF</div>
+                <div class="flex-grow">
+                    <h3 class="text-lg font-bold text-gov-primary">Modelos de Contrato de Cuidador Remunerado</h3>
+                    <p class="text-sm text-gray-600">Material para profissionais: como formalizar a relação de trabalho com segurança.</p>
+                </div>
+                <a href="./assets/ebooks/modelos_contrato.pdf" target="_blank" class="bg-gov-red text-white py-2 px-4 rounded-md font-bold hover:bg-red-700 transition duration-200 ml-4">
+                    Comprar / Acessar
+                </a>
+            </div>
+
         </div>
         
-        <!-- SEÇÕES EXTRAS DE CONTEÚDO (Outras Páginas/Views) -->
-        <section id="publicacoes" class="content-view px-4 md:px-6 hidden"><h2>PÁGINA: PUBLICAÇÕES</h2><p>Artigos formais, notícias e reportagens externas sobre a Política Nacional de Cuidados.</p></section>
-        <section id="reflexoes" class="content-view px-4 md:px-6 hidden"><h2>PÁGINA: REFLEXÕES</h2><p>Meus artigos de opinião, análises e reflexões pessoais sobre a vivência do cuidado e temas éticos.</p></section>
-        <section id="casosaudios" class="content-view px-4 md:px-6 hidden"><h2>PÁGINA: CASOS & ÁUDIOS</h2><p>Fichas de Casos Jurídicos (anonimizados) com player de áudio para análise.</p></section>
-        <section id="ebooks" class="content-view px-4 md:px-6 hidden"><h2>PÁGINA: VENDA DE E-BOOKS</h2><p>Lista de E-books e materiais de estudo para venda, com links diretos.</p></section>
-        <section id="suporte" class="content-view px-4 md:px-6 hidden"><h2>PÁGINA: SUPORTE</h2><p>CONECTA VOLUNTÁRIO (Cadastro de instituições) e DOAÇÃO CUIDADO (Conexão de doadores e necessitados).</p></section>
-        <section id="contato" class="content-view px-4 md:px-6 hidden"><h2>PÁGINA: CONTATO</h2><p>Informações de contato do portal e da advogada criadora: [Nome, OAB, Telefone, E-mail].</p></section>
-
-
-        <!-- VISUALIZAÇÃO DO ARTIGO COMPLETO (Inicialmente Escondido) -->
-        <section id="full-article-view" class="content-view px-4 md:px-6 pt-6 hidden">
-            <button onclick="showContent('home-content')" class="mb-6 px-4 py-2 bg-gov-secondary text-white rounded-md hover:bg-gov-primary transition duration-200 text-sm font-medium">
-                &larr; Voltar para a Home
-            </button>
-            <article class="bg-white p-6 md:p-10 rounded-lg shadow-lg">
-                <h1 class="text-3xl font-bold text-gov-primary mb-2">Distinção entre trabalho doméstico e de cuidado: perspectivas jurídicas e sociais</h1>
-                <p class="text-sm text-gray-600 mb-6 border-b pb-4">
-                    **Francisco das C. Lima Filho** | Opinião | 31 de outubro de 2025, 6h33 | Trabalhista
-                </p>
-
-                <p class="mb-4 text-justify">Historicamente, o trabalho de cuidado tem sido subvalorizado e invisibilizado, contribuindo para a desigualdade de gênero e para a limitação das oportunidades econômicas e profissionais das mulheres, especialmente das mulheres negras ¹. Embora frequentemente não remunerado, esse trabalho possui enorme relevância econômica, pois sem o cuidado prestado nas famílias e nas comunidades, especialmente aquelas das periféricas, grande parte das pessoas não poderia participar da força de trabalho formal, considerada “produtiva”, isto é, aquela voltada à geração de bens e serviços de valor mercantil ².</p>
-                
-                <figure class="my-6">
-                    <!-- Imagem Freepik (Placeholder público temático - não requer upload) -->
-                    <img src="https://placehold.co/800x250/f0f0f0/333333?text=Mulher%20no%20Trabalho%20de%20Cuidado" 
-                         alt="Imagem conceitual Freepik" 
-                         class="w-full h-auto rounded-lg">
-                </figure>
-
-                <p class="mb-4 text-justify">Em contraposição, o trabalho “reprodutivo” — aquele que assegura a reprodução da vida e das pessoas — é desvalorizado justamente por se situar no âmbito privado ou doméstico, e ser socialmente atribuído às mulheres ³. Essa divisão sexual do trabalho, fruto de uma lógica patriarcal e capitalista, construiu uma hierarquia que privilegia o trabalho produtivo, relegando o cuidado à esfera doméstica e afetiva⁴, o que foi objeto de severas críticas pelo movimento feminino.</p>
-                
-                <h2 class="text-xl font-semibold text-gov-primary mt-6 mb-3 border-b pb-1">A discussão contemporânea e a distinção essencial</h2>
-                
-                <p class="mb-4 text-justify">A discussão contemporânea sobre a economia do cuidado e a valorização do trabalho doméstico tem adquirido relevância nos debates sobre direitos sociais, igualdade de gênero e dignidade da pessoa humana. Apesar de ambos se desenvolverem muitas vezes no mesmo espaço — o lar —, o trabalho doméstico e o trabalho de cuidado não se confundem. Essa distinção, de natureza conceitual e jurídica, é essencial para a formulação de políticas públicas coerentes e para a adequada proteção das trabalhadoras do cuidado.</p>
-                
-                <p class="mb-4 italic text-justify">Como destaca Raquel Leite da Silva Santana, o cuidado é uma forma de trabalho racializado, exercido majoritariamente por mulheres negras, o que evidencia a necessidade de regulamentação jurídica própria para as cuidadoras remuneradas ⁵. O Projeto de Lei nº 1.385/2007, ainda em tramitação, buscou essa profissionalização, reconhecendo o cuidado como espécie jurídica autônoma dentro do gênero “trabalho reprodutivo”.</p>
-
-                <p class="mb-4 text-justify">O presente artigo, portanto, pretende refletir sobre os fundamentos sociais e jurídicos que distinguem o trabalho doméstico do trabalho de cuidado, sem pretensão de exaurir o tema, mas de contribuir para o debate sobre sua necessária valorização.</p>
-
-                <h2 class="text-xl font-semibold text-gov-primary mt-6 mb-3 border-b pb-1">Trabalho doméstico: conceito e enquadramento jurídico</h2>
-
-                <p class="mb-4 text-justify">O trabalho doméstico é definido pelo artigo 1º da Lei Complementar nº 150/2015 como aquele “prestado por pessoa física, de forma contínua, subordinada, onerosa e pessoal, e de finalidade não lucrativa, à pessoa ou à família, no âmbito residencial destas“. Trata-se de atividade essencial à reprodução da vida cotidiana — limpeza, alimentação, manutenção do lar — mas historicamente desvalorizada por estar associada à esfera privada e à feminização do labor ⁶.</p>
-
-                <figure class="my-6">
-                    <!-- Imagem Spacca (Placeholder público temático - não requer upload) -->
-                    <img src="https://placehold.co/800x250/f0f0f0/333333?text=Trabalho%20Doméstico%20e%20Cotidiano" 
-                         alt="Imagem conceitual Spacca" 
-                         class="w-full h-auto rounded-lg">
-                </figure>
-                
-                <p class="mb-4 text-justify">A Constituição de 1988, especialmente após a Emenda Constitucional nº 72/2013, ampliou o rol de direitos dos empregados domésticos, corrigindo uma discriminação histórica existente desde o texto originário ⁷. Contudo, a persistência da informalidade e da desigualdade salarial demonstra que a valorização formal não bastou para eliminar a hierarquia social que marginaliza esse trabalho e discriminação do trabalhador doméstico, e a figura, ainda existente em muitas famílias, do “quartinho da empregada”, de que fala Laurentino Gomes, em sua trilogia *Escravidão*, é uma prova simbólica dessa realidade.</p>
-                
-                <p class="mb-4 text-justify">Do ponto de vista jurídico, a subordinação típica do emprego doméstico ocorre dentro da residência, sem finalidade econômica direta, o que o diferencia das relações produtivas. No entanto, o princípio da dignidade da pessoa humana (artigo 1º, III, CF/88), o valor social do trabalho (artigo 1º, IV) e o princípio da igualdade material (artigo 5º, caput) impõem interpretação que supere a lógica patriarcal que inferioriza o trabalho doméstico ⁸.</p>
-
-                <h2 class="text-xl font-semibold text-gov-primary mt-6 mb-3 border-b pb-1">Trabalho de cuidado: natureza e especificidade</h2>
-
-                <p class="mb-4 text-justify">O trabalho de cuidado, embora muitas vezes prestado no mesmo espaço doméstico, possui natureza distinta: trata-se de uma atividade relacional, voltada diretamente ao bem-estar físico, emocional e social de outra pessoa. Envolve, portanto, atenção, empatia e responsabilidade moral, transcendendo o simples fazer doméstico ⁹.</p>
-                
-                <p class="mb-4 text-justify">Esse trabalho encontra respaldo constitucional nos artigos 226, 227 e 230 da Constituição de 1988, que impõem à família, à sociedade e ao Estado o dever de proteger crianças, adolescentes, pessoas idosas e com deficiência. O cuidado, portanto, deve ser compreendido como direito fundamental e, simultaneamente, como trabalho socialmente necessário à reprodução da vida¹⁰.</p>
-                
-                <p class="mb-4 text-justify">A ausência de regulamentação específica no ordenamento jurídico brasileiro para o trabalho de cuidado remunerado gera insegurança e desproteção. Doutrinadoras feministas como Helena Hirata e Nancy Fraser destacam que o cuidado, enquanto atividade indispensável à manutenção da vida, deve ser reconhecido como parte integrante da economia política contemporânea, e não como um apêndice doméstico ¹¹.</p>
-
-                <p class="mb-4 text-justify">No plano internacional, a Convenção nº 189 da OIT (2011) e a Recomendação nº 204 (2015) reconhecem a importância do trabalho de cuidado e instam os Estados a criarem marcos legais que garantam proteção social, condições dignas e igualdade de oportunidades ¹².</p>
-
-                <h2 class="text-xl font-semibold text-gov-primary mt-6 mb-3 border-b pb-1">Linha tênue e critérios distintivos</h2>
-
-                <p class="mb-4 text-justify">A fronteira entre o trabalho doméstico e o trabalho de cuidado nem sempre é nítida. Em muitos casos, a mesma pessoa realiza funções domésticas e presta assistência direta — como limpar a casa e cuidar de uma criança ou idoso.</p>
-
-                <p class="mb-4 text-justify">Nessas situações híbridas, a finalidade principal do contrato é o elemento jurídico determinante:</p>
-                <ul class="list-disc list-inside ml-6 space-y-1 text-justify">
-                    <li>Se o objeto predominante é a manutenção do lar, trata-se de trabalho doméstico.</li>
-                    <li>Se o objeto é o cuidado direto e contínuo de pessoa, configura-se trabalho de cuidado ¹³.</li>
-                </ul>
-
-                <p class="mb-4 text-justify">A doutrina contemporânea tem enfatizado a dimensão humana e afetiva do cuidado, que exige preparo técnico e emocional. A pessoalidade, a confiança e a responsabilidade envolvidas fazem do cuidado uma categoria de labor que demanda formação específica, especialmente no atendimento a pessoas idosas, enfermas ou com deficiência ¹⁴.</p>
-
-                <h2 class="text-xl font-semibold text-gov-primary mt-6 mb-3 border-b pb-1">Implicações jurídicas e desafios normativos</h2>
-
-                <p class="mb-4 text-justify">A ausência de regulação específica para o trabalho de cuidado compromete a segurança jurídica de trabalhadoras e empregadores, além de invisibilizar o valor econômico dessa atividade. O Instituto de Pesquisa Econômica Aplicada (Ipea) estima que o trabalho não remunerado de cuidado representa mais de 10% do PIB brasileiro ¹⁵.</p>
-
-                <p class="mb-4 text-justify">De fato, a ausência de normas disciplinando essa modalidade de trabalho termina contribuindo para a manutenção da divisão desigual do trabalho, o que tem implicações negativas para a igualdade de gênero. Isso se manifesta no fato de que muitas ocupações de cuidado são erroneamente consideradas não qualificadas ou uma extensão do papel “natural” ou “tradicional” das mulheres como cuidadoras, um estereótipo que contribui para seu baixo *status*, baixa remuneração e falta de representação nos espaços de tomada de decisão.</p>
-                
-                <p class="mb-4 text-justify">A distinção entre “cuidar” e “servir” é crucial. O primeiro implica uma relação de assistência e afeto; o segundo, de prestação material. Por isso, defende-se, aqui, a criação de um marco legal próprio para os cuidadores, contemplando jornada especial, formação mínima, remuneração adequada e responsabilidades diferenciadas ¹⁶.</p>
-
-                <p class="mb-4 text-justify">Do ponto de vista social, a questão é também de gênero e raça. Segundo dados do IBGE, mais de 92% das trabalhadoras domésticas e cuidadoras no Brasil são mulheres, e quase 65% são negras¹⁷. Essa realidade reflete a herança da escravidão e da divisão racial do trabalho, perpetuando desigualdades estruturais que desafiam o princípio da igualdade substantiva.</p>
-
-                <p class="mb-4 text-justify">A construção de políticas públicas que valorizam o cuidado é, portanto, uma exigência de justiça social e de direitos humanos, em consonância com os compromissos assumidos pelo Brasil perante organismos internacionais como a ONU Mulheres e a OIT.</p>
-
-                <h2 class="text-xl font-semibold text-gov-primary mt-6 mb-3 border-b pb-1">Conclusão</h2>
-
-                <p class="mb-4 text-justify">A distinção entre o trabalho doméstico e o trabalho de cuidado transcende a semântica: trata-se de reconhecer juridicamente atividades centrais à manutenção da vida e da dignidade humana.</p>
-                
-                <p class="mb-4 text-justify">Enquanto o primeiro está voltado à organização do lar, o segundo visa ao bem-estar de pessoas, com complexidade técnica e afetiva que impõe regulamentação própria. A valorização do cuidado como trabalho essencial demanda superar a herança patriarcal e racial que o invisibiliza e afirmar, sob a ótica constitucional, que cuidar é também produzir humanidade.</p>
-
-                <p class="mb-4 text-justify">O desafio que se impõe ao legislador é construir um marco jurídico que reconheça o cuidado como trabalho socialmente necessário, dotado de valor econômico, ético e político, conforme os princípios da dignidade da pessoa humana, da igualdade e do valor social do trabalho (artigos 1º, III e IV; 3º, IV; e 5º, caput, da CF/88).</p>
-
-                <div class="mt-8 pt-4 border-t border-gray-200">
-                    <h3 class="text-lg font-bold text-gray-700 mb-4">Referências Bibliográficas</h3>
-                    <ol class="list-decimal list-outside ml-6 text-xs space-y-2 text-justify">
-                        <li>FEDERICI, Silvia. O ponto zero da revolução: trabalho doméstico, reprodução e lutas feministas. São Paulo: Elefante, 2019.</li>
-                        <li>FRASER, Nancy. Contradições do capital e cuidados. Revista Sociedade e Estado, Brasília, v. 33, n. 1, 2018.</li>
-                        <li>HIRATA, Helena. Trabalho, cuidado e desigualdades. São Paulo: Boitempo, 2020.</li>
-                        <li>SOUZA-LOBO, Elisabeth. A classe operária tem dois sexos: trabalho, dominação e resistência. São Paulo: Brasiliense, 2011.</li>
-                        <li>SANTANA, Raquel Leite da Silva. O trabalho de cuidado e a racialização do labor feminino. Revista Direito e Sociedade, v. 10, n. 2, 2022.</li>
-                        <li>Lei Complementar nº 150, de 1º de junho de 2015. Diário Oficial da União, Brasília, 2 jun. 2015.</li>
-                        <li>Constituição da República Federativa do Brasil de 1988.</li>
-                        <li>DELGADO, Maurício Godinho. Curso de Direito do Trabalho. 20. ed. São Paulo: LTr, 2021.</li>
-                        <li>PISCITELLI, Adriana. Cuidado e gênero: novas fronteiras do trabalho reprodutivo. Revista Cadernos Pagu, n. 55, 2019.</li>
-                        <li>Constituição da República Federativa do Brasil de 1988, arts. 226, 227 e 230.</li>
-                        <li>FRASER, Nancy; HIRATA, Helena. Crisis of care and gender equality. Paris: CNRS Éditions, 2020.</li>
-                        <li>Organização Internacional do Trabalho (OIT). Convenção nº 189 e Recomendação nº 204 sobre o Trabalho Doméstico. Genebra, 2011.</li>
-                        <li>Ibid.</li>
-                        <li>Síntese de Indicadores Sociais: uma análise das condições de vida da população brasileira. Brasília, 2023.</li>
-                        <li>Tempo de cuidar: o trabalho não remunerado e os seus impactos econômicos. Brasília, 2022.</li>
-                        <li>BRITO, Fausto. Políticas públicas e economia do cuidado no Brasil. Revista Serviço Social e Sociedade, v. 145, 2023.</li>
-                        <li>IBGE, Pesquisa Nacional por Amostra de Domicílios Contínua (PNAD Contínua), 2024.</li>
-                    </ol>
-
-                    <div class="mt-8 p-4 bg-gov-accent rounded-lg">
-                        <h4 class="font-bold text-gov-primary">Sobre o Autor</h4>
-                        <p class="text-sm mt-1">Francisco das C. Lima Filho é desembargador do Trabalho, diretor da Escola Judicial do Tribunal Regional do Trabalho da 24ª Região (Ejud24), mestre e doutor em Direito Social pela Universidad de Castilla-La Mancha (Espanha).</p>
-                    </div>
-                </div>
-
-            </article>
-        </section>
-
-    </main>
-
-    <!-- RODAPÉ -->
-    <footer class="bg-gov-primary text-white py-6 mt-10">
-        <div class="main-container px-4 md:px-6 flex flex-col md:flex-row justify-between items-center text-sm">
-            <p>&copy; <span id="current-year"></span> Conexão Cuidar - Iniciativa Cidadã Passo Fundo/RS. Todos os direitos reservados.</p>
-            <nav class="mt-4 md:mt-0 space-x-4">
-                <a href="#suporte" class="hover:text-gov-secondary">Suporte</a>
-                <a href="#contato" class="hover:text-gov-secondary">Contato</a>
-                <a href="#sobre" class="hover:text-gov-secondary">Sobre Nós</a>
-            </nav>
+        <div class="mt-10 p-4 bg-gov-primary text-white rounded-lg text-sm">
+            **Como anexar seus E-books no GitHub:**
+            1. No seu repositório `guia-cuidador`, crie uma nova pasta chamada `assets`.
+            2. Dentro de `assets`, crie outra pasta chamada `ebooks`.
+            3. Faça o upload dos seus arquivos PDF (ex: `guia_pnc.pdf`, `direitos_idoso.pdf`, `modelos_contrato.pdf`) para essa pasta `ebooks`.
+            4. Os links deste arquivo `ebooks_list.html` já estão configurados para esses caminhos.
         </div>
-    </footer>
-
-    <!-- JAVASCRIPT: Lógica da Calculadora, Citação Dinâmica, Carrossel e Navegação -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const currentYear = new Date().getFullYear();
-            document.getElementById('current-year').textContent = currentYear;
-            const contentViews = document.querySelectorAll('.content-view');
-
-            // --- Função de Navegação (Mostra apenas o conteúdo selecionado) ---
-            window.showContent = function(id) {
-                contentViews.forEach(view => {
-                    view.classList.add('hidden');
-                });
-                document.getElementById(id).classList.remove('hidden');
-                // Role para o topo da página ao mudar de seção
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            };
-
-            // --- Lógica da Citação Dinâmica ---
-            const quotes = [
-                { text: "O cuidado é uma teia social que nos conecta, mas a política precisa dar o nó final.", source: "Especialista Anônimo" },
-                { text: "A dignidade da pessoa idosa é um princípio que deve nortear toda a Política de Cuidados.", source: "Lei nº 10.741/03 (Estatuto do Idoso)" },
-                { text: "Encontrei no portal as referências que precisava para o meu pai. Uma luz em Passo Fundo.", source: "Usuário(a) A." },
-                { text: "Cuidar de quem cuida também é um ato de responsabilidade social e política.", source: "Movimento PNC-RS" }
-            ];
-
-            const quoteEl = document.getElementById('dynamic-quote');
-            const sourceEl = document.getElementById('quote-source');
-
-            function updateQuote() {
-                const randomIndex = Math.floor(Math.random() * quotes.length);
-                const quote = quotes[randomIndex];
-                quoteEl.textContent = `"${quote.text}"`;
-                sourceEl.textContent = `- ${quote.source}`;
-            }
-
-            // Atualiza a citação a cada 10 segundos
-            updateQuote();
-            setInterval(updateQuote, 10000);
-
-
-            // --- Lógica da Calculadora de Custos de Cuidado ---
-            const simulateButton = document.getElementById('simulate-button');
-            const dailyHoursInput = document.getElementById('daily-hours');
-            const weeklyDaysInput = document.getElementById('weekly-days');
-            const resultDiv = document.getElementById('simulation-result');
-
-            // Tabela de Referência (Valor Base por Hora, R$ 15,00. Apenas para simulação)
-            const BASE_HOURLY_RATE = 15.00; 
-
-            simulateButton.addEventListener('click', () => {
-                const dailyHours = parseFloat(dailyHoursInput.value);
-                const weeklyDays = parseFloat(weeklyDaysInput.value);
-
-                if (isNaN(dailyHours) || isNaN(weeklyDays) || dailyHours <= 0 || weeklyDays <= 0 || dailyHours > 24 || weeklyDays > 7) {
-                    resultDiv.innerHTML = '<p class="text-red-700 font-bold">Por favor, insira valores válidos (Horas Diárias entre 1 e 24; Dias entre 1 e 7).</p>';
-                    resultDiv.classList.remove('hidden');
-                    return;
-                }
-
-                // Cálculo
-                const totalHoursPerWeek = dailyHours * weeklyDays;
-                const totalHoursPerMonth = totalHoursPerWeek * 4.33; // Média de semanas no mês
-                
-                const hourlyCost = BASE_HOURLY_RATE.toFixed(2).replace('.', ',');
-                const weeklyCost = (totalHoursPerWeek * BASE_HOURLY_RATE).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-                const monthlyCost = (totalHoursPerMonth * BASE_HOURLY_RATE).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-                
-                // Exibição dos resultados
-                resultDiv.innerHTML = `
-                    <p class="font-bold text-lg text-gov-primary">SIMULAÇÃO BASE DE CUSTO</p>
-                    <p class="mt-2 text-sm">Custo Base Sugerido por Hora: <span class="font-bold text-gov-secondary">R$ ${hourlyCost}</span></p>
-                    <p class="text-sm">Total de Horas/Mês (Aprox.): <span class="font-bold">${totalHoursPerMonth.toFixed(1)}h</span></p>
-                    <p class="text-xl font-extrabold text-green-700 mt-2">Valor Base Mensal: ${monthlyCost}</p>
-                    <p class="text-xs text-gray-500 mt-2">(Estimativa de ${weeklyCost}/semana)</p>
-                `;
-                resultDiv.classList.remove('hidden');
-            });
-
-            // --- Lógica do Carrossel de Imagens (Imagens Rotativas) ---
-            const carousel = document.getElementById('main-carousel');
-            const items = carousel.querySelectorAll('.carousel-item');
-            let currentIndex = 0;
-
-            function showNextItem() {
-                // Remove a classe 'active' do item atual
-                items[currentIndex].classList.remove('active');
-                
-                // Calcula o próximo índice
-                currentIndex = (currentIndex + 1) % items.length;
-                
-                // Adiciona a classe 'active' ao próximo item
-                items[currentIndex].classList.add('active');
-            }
-
-            // Inicia a rotação a cada 5 segundos (5000ms)
-            setInterval(showNextItem, 5000);
-
-            // --- Lógica do Menu Mobile (Toggle) ---
-            const menuToggle = document.getElementById('menu-toggle');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            menuToggle.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        });
-    </script>
+        
+    </div>
 
 </body>
 </html>
