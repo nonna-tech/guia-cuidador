@@ -19,6 +19,9 @@
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
+                        // Adicionando uma fonte alternativa para o título, caso queira mudar o estilo facilmente
+                        // Nota: A fonte 'serif' é usada como fallback para dar um estilo mais forte.
+                        title: ['Georgia', 'serif'], 
                     }
                 }
             }
@@ -79,13 +82,20 @@
             line-height: 1.5;
             color: #4b5563;
         }
-        /* Estilos de Destaque Adicionais (Conforme solicitado) */
+        /* Estilos de Destaque Adicionais */
         .highlight-text-light {
-            color: #007bff; /* Usando gov-secondary */
+            color: #007bff; /* Azul de destaque no fundo escuro */
         }
+        /* Subtítulo na faixa azul escura, agora em branco puro e mais forte */
         .highlight-text-dark {
-            color: #ffffff; /* Branco puro para contraste no azul escuro */
-            font-weight: 500;
+            color: #ffffff; 
+            font-weight: 600; /* Aumenta o peso para melhor leitura */
+        }
+        /* Título Principal com fonte diferente e ainda mais contraste */
+        .site-title {
+            font-family: 'title', sans-serif;
+            color: #ffffff; /* Branco, para contraste máximo com fundo #212529 */
+            font-size: 1.5rem; /* Aumenta um pouco mais no desktop/mobile */
         }
     </style>
 </head>
@@ -95,8 +105,8 @@
     <header>
         <div class="header-bar">
             <div class="main-container flex justify-between items-center px-4 md:px-6">
-                <!-- Título Principal (CONEXÃO CUIDAR) -->
-                <h1 class="text-xl md:text-2xl font-bold tracking-wider highlight-text-light">CONEXÃO CUIDAR</h1>
+                <!-- Título Principal (CONEXÃO CUIDAR) - Usando nova classe de estilo -->
+                <h1 class="text-xl md:text-2xl font-bold tracking-wider site-title">CONEXÃO CUIDAR</h1>
                 
                 <!-- Menu Principal (Desktop) -->
                 <nav class="hidden md:flex space-x-4 text-sm font-medium">
@@ -119,7 +129,7 @@
         <!-- Subtítulo / Faixa de Apoio -->
         <div class="bg-gov-primary py-3">
             <div class="main-container px-4 md:px-6">
-                <!-- Subtítulo Destacado -->
+                <!-- Subtítulo Destacado (usando highlight-text-dark e mais peso) -->
                 <p class="text-base md:text-lg highlight-text-dark font-light">O seu portal de apoio sobre a Política Nacional de Cuidados em Passo Fundo/RS.</p>
             </div>
         </div>
@@ -575,4 +585,3 @@
 
 </body>
 </html>
-               
